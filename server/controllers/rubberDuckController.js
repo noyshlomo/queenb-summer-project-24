@@ -1,5 +1,19 @@
 const RubberDuck = require('../models/RubberDuckModel');
 
+
+//get user profile 
+const getAllUserRecipes = async (req, res) => {
+    try {
+        const recipes = await Recipes.find();
+        res.status(200).json({recipes});
+    } catch (err) {
+        res.status(400).json({mssg: "error getting user's info", err})
+    }
+}
+
+
+
+
 // get all ducks
 const getAllDucks = async (req, res) => {
     try {
@@ -73,6 +87,7 @@ const updateDuck = async (req, res) => {
 }
 
 module.exports = {
+    getAllUserRecpies,
     getAllDucks,
     getSingleDuck,
     createDuck,

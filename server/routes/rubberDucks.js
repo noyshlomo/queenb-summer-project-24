@@ -1,5 +1,7 @@
 const express = require('express');
-const { createDuck,
+const { 
+    getAllUserRecipes, 
+    createDuck,
     getAllDucks,
     getSingleDuck,
     deleteDuck,
@@ -12,6 +14,14 @@ const router = express.Router()
 /**
  * Read Only Permission Routes
  */
+//GET user profile
+router.get('/:id', getAllUserRecipes)
+
+
+
+
+
+
 // GET all ducks
 router.get('/', getAllDucks)
 

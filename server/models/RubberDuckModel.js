@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const rubberDuckSchema = new Schema({
+const RecipesSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -19,4 +19,4 @@ const rubberDuckSchema = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('RubberDuck', rubberDuckSchema);
+module.exports = mongoose.model('Recipes', RecipesSchema);
