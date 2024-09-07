@@ -13,9 +13,9 @@ const loginProcess = async (req, res) => {
 }
 //signup
 const signupProcess = async (req, res) => {
-    const {email,password} = req.body
+    const {email,password,userName,phone} = req.body
     try{
-        const newUser = await User.signup(email, password)
+        const newUser = await User.signup(email, password, userName, phone)
          //token
         const token = authenticateToken(newUser._id)
         res.status(200).json({email, token})
