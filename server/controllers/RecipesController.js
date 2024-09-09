@@ -24,15 +24,15 @@ const getAllUserRecipes = async (req, res) => {
     }
 
     // Fetch recipes from the database
-    const recipe = await RecipesDB.find({ _id: id })
+    const recipes = await RecipesDB.find({ _id: id })
 
     // If no recipes found, return 404
-    if(!recipe){
+    if(!recipes){
         return res.status(404).json({error: 'No recipes found for this user'})
     }
 
     // Return the recipes
-    res.status(200).json(recipe)
+    res.status(200).json(recipes)
 }
 
 // delete a recipe

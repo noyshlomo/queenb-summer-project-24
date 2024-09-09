@@ -1,10 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Dashboard.module.css';
-// import Dashboard from '../../components/Dashboard/RandomDuck';
+import axios from 'axios';
 
-const Dashboard = () => {
+
+
+
+//display user content
+const Dashboard = ({ userId }) => {
+    const [recipes, setRecipes] = useState([]);
+    useEffect(() => {
+        axios.get(`http://localhost:3000/${userId}`)
+          .then(response => {
+            setRecipes(response.data);
+          })
+          .catch(error => {
+            console.error('Error fetching recipes:', error);
+          });
+      }, [userId]);
+
   return (
-   <div></div>
+   <div>
+    <h1>Your Recipes</h1>
+    {recipes.map(recipe => (
+      <div key={recipe._id}>
+        <h2>{recipe.title}</h2>
+        <p>{recipe.description}</p>
+      </div>
+    ))}
+   </div>
   );
 };
 

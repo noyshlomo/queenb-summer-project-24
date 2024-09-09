@@ -6,8 +6,8 @@ import RandomDuck from '../../components/RandomDuck/RandomDuck';
 const Home = () => {
   return (
     <div className={styles.home}>
-      <h1 className={styles.headline}>Duck It</h1>
-      <RandomDuck />
+      <h1 className={styles.headline}>rec</h1>
+      <input type="button" onclick="location.href='https://google.com';" value="Go to Google" />
     </div>
   );
 };
