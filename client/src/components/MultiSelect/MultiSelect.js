@@ -15,9 +15,15 @@ const MultiSelect = ({ label, value, onChange , emptyFields, fieldName }) => {
 
     // Defining the options for the multi-selection field
     const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
+        { value: 'italian', label: 'Italian' },
+        { value: 'sushi', label: 'Sushi' },
+        { value: 'mexican', label: 'Mexican' },
+        { value: 'vegan', label: 'Vegan' },
+        { value: 'vegetarian', label: 'Vegetarian' },
+        { value: 'indian', label: 'Indian' },
+        { value: 'meat', label: 'Meat' },
+        { value: 'dairy', label: 'Dairy' },
+        { value: 'dessert', label: 'Dessert' }
     ];
 
     // Function to handle the change event in the multi-selection field
@@ -47,7 +53,6 @@ const MultiSelect = ({ label, value, onChange , emptyFields, fieldName }) => {
                       ...provided,
                       maxWidth: '500px',
                       display: 'flex',
-                      //justifyContent: 'center', 
                       width: '100%',
                       margin: 'auto',
                     }),
