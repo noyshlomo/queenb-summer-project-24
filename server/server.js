@@ -2,8 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+<<<<<<< HEAD
 const usersRoutes = require('./routes/user')
 const recipesRouter = require ('./routes/recipesRouter')
+=======
+const recipeRouter = require ('./routes/recipeRouter')
+>>>>>>> e7edea3 (Fixes + navbar component + app.js + server .js.)
 //const rubberDucksRoutes = require('./routes/rubberDucks')
 dotenv.config();
 
@@ -25,8 +29,12 @@ app.use((req, res, next) => {
 })
 
 // Routes
+<<<<<<< HEAD
 app.use('/api/user', usersRoutes)
 app.use('/api/recipes', recipesRouter)
+=======
+app.use('/api/recipe', recipeRouter)
+>>>>>>> e7edea3 (Fixes + navbar component + app.js + server .js.)
 
 
 // Connect to MongoDB
