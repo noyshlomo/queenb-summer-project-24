@@ -35,7 +35,7 @@ const getSingleDuck = async (req, res) => {
     }
 }
 
-// create a new duck
+// create a new duck 
 const createDuck = async (req, res) => {
     const {name, color, imageUrl} = req.body;
 
