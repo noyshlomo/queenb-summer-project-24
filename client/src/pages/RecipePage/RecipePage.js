@@ -2,7 +2,7 @@ import {React, useState, useEffect } from 'react'
 import { useParams} from 'react-router-dom'
 import './styles.css'
 
-function RecipePage({props}) {
+function RecipePage() {
     const [recipe, setRecipe] = useState({})
     const {id} = useParams();
     const getRecipe = async() => {
