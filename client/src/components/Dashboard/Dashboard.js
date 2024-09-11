@@ -33,6 +33,7 @@ const Dashboard = () => {
                     {recip.imgLink && <img src={recip.imgLink} alt={recip.title} className={styles.recipeImage} />} 
                     <h1>{recip.title}</h1> 
                     <p>{recip.description}</p> 
+                    <p>{recip.prepTime}</p> 
                 </div> 
             )) : (
                 <p>No recipes found</p> // Fallback content

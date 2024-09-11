@@ -8,4 +8,70 @@
     margin-bottom: 20px;
     color: #53474F;
   }
+
+  /* Main container for all recipes */
+h1 {
+  font-size: 24px;
+  color: #ff6b81;
+  text-align: center;
+}
+
+.recipeCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ff6b81;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f3f2ee;
+  border-radius: 8px;
+}
+
+.recipeImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.recipeCard h1 {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+.recipeCard p {
+  font-size: 14px;
+  color: #666;
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.actionButtons button {
+  background-color: #e16ff0;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actionButtons button:hover {
+  background-color: #ff4a61;
+}
+
+.actionButtons button.delete {
+  background-color: #ffb6c1;
+}
+
+.actionButtons button.delete:hover {
+  background-color: #ff7b99;
+}
+
   
