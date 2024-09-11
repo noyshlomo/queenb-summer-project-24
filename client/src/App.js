@@ -12,13 +12,13 @@ function App() {
           <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
           <nav className={styles.appNav}>
             <Link to="/" className={styles.appLink}>Home</Link>
-            <Link to="/:id" className={styles.appLink}>Profile</Link>
+            <Link to="/:userId" className={styles.appLink}>Profile</Link>
           </nav>
         </header>
         <main className={styles.main}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/:id" element={<UserProfile />} />
+            <Route path="/:userId" element={<UserProfile />} />
           </Routes>
         </main>
         <footer className={styles.footer}>
