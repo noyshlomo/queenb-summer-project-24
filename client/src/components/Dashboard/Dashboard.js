@@ -26,7 +26,7 @@ const Dashboard = () => {
 
   return (
     <div> 
-     <h1>Your Recipes</h1> 
+     <h1>My Recipes</h1> 
             {Array.isArray(recipe) ? recipe.map(recip => ( 
                 <div key={recip._id} className={styles.recipeCard}> 
                     {/* Display the image */}

@@ -5,7 +5,6 @@ import Dashboard from '../../components/Dashboard/Dashboard';
 const UserProfile = () => {
   return (
     <div className={styles.UserProfile}>
-      <h1 className={styles.UserProfile}>My Recipes</h1>
       <Dashboard />
 
     </div>
