@@ -1,27 +1,60 @@
 /* components/Modal/Modal.module.css */
 .modalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
-    text-align: center;
-  }
-  
-  .modalButtons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4); /* Slightly lighter background for a modern look */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px); /* Adds a blurred effect to the background */
+  -webkit-backdrop-filter: blur(5px); /* Vendor prefix for Safari and older browsers */
+  z-index: 1000; /* Ensures the modal is above other content */
+}
+
+.modal {
+  background: #fff; /* Clean white background for modern design */
+  padding: 20px;
+  border-radius: 12px; /* Slightly more rounded corners */
+  width: 90%; /* Responsive width */
+  max-width: 500px; /* Max width for larger screens */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth animations */
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: center; /* Center buttons horizontally */
+  gap: 10px; /* Add space between buttons */
+  margin-top: 20px;
+}
+
+.modalButtons button {
+  background: #007BFF; /* Primary button color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease; /* Interactive effects */
+}
+
+.modalButtons button:hover {
+  background: #0056b3; /* Darker shade on hover */
+}
+
+.modalButtons button:active {
+  transform: scale(0.98); /* Slight scale down on click */
+}
+
+.modalButtons button.secondary {
+  background: #6c757d; /* Secondary button color */
+}
+
+.modalButtons button.secondary:hover {
+  background: #5a6268; /* Darker shade on hover */
+}
