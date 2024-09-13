@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from './Home.module.css';
-import RandomDuck from '../../components/RandomDuck/RandomDuck';
-
 
 const Home = () => {
   return (

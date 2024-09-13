@@ -4,6 +4,7 @@ import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
 import UserProfile from './pages/UserProfile/UserProfile';
 
+
 function App() {
   return (
     <BrowserRouter>
