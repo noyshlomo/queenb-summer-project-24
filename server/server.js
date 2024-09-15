@@ -4,7 +4,6 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 
 const recipeRouter = require ('./routes/recipeRouter')
-const rubberDucksRoutes = require('./routes/rubberDucks')
 const usersRoutes = require('./routes/user')
 
 
@@ -29,7 +28,6 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/recipe', recipeRouter)
-app.use('/api/rubberDucks', rubberDucksRoutes)
 app.use('/api/user', usersRoutes)
 
 // Connect to MongoDB
