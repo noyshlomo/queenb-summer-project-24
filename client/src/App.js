@@ -23,6 +23,12 @@ function App() {
             <Route path="/:id" element={<RecipePage />} />
             <Route path="/filters" element={<FiltersPage />} />
           </Routes>
+          <Routes>
+            {/* <Route path="/:id" element={<RecipePage/>} /> */}
+          </Routes>
+          <Routes>
+            <Route path="/upload" element={<UploadRecipePage/>} />
+          </Routes>
         </main>
         <footer className={styles.footer}>
           <p>&copy; 2024 My App</p>
@@ -33,3 +39,4 @@ function App() {
 }
 
 export default App;
+
