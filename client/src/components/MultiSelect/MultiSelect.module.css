@@ -1,0 +1,17 @@
+/* Apply styling to ensure consistent appearance */
+.error {
+    border: 2px solid #b3613c !important;
+  }
+  
+  .react-select__control {
+    border-color: #d3d3d3;
+  }
+  
+  .react-select__control.error {
+    border-color: red !important;
+  }
+  
+  .react-select__indicator-separator {
+    background-color: #b3613c;
+  }
+  

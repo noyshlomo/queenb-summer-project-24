@@ -1,0 +1,21 @@
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid #d3d3d3;
+    border-radius: 4px;
+  }
+  
+  input.error {
+    border-color: red;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 0.75rem;
+  }
+  

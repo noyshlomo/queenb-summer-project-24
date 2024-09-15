@@ -1,0 +1,31 @@
+.input-container {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #d3d3d3;
+  border-radius: 4px;
+}
+
+.error {
+  border-color: red;
+}
+
+.remove-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #b3613c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.75rem;
+}
+
