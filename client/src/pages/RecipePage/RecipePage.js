@@ -1,11 +1,11 @@
-import {React, useState, useEffect } from 'react'
+import {React, useState, useEffect, useCallback } from 'react'
 import { useParams} from 'react-router-dom'
 import './styles.css'
 
 function RecipePage() {
     const [recipe, setRecipe] = useState({})
     const {id} = useParams();
-    const getRecipe = async() => {
+    const getRecipe = useCallback(async() => {
         try{
             const response = await fetch(`http://localhost:5000/api/recipe/${id}`)
             if(!response.ok){
@@ -19,9 +19,12 @@ function RecipePage() {
             console.log(err);
             return <div>Not Found</div>///דף שגוי - לתקן
         }
-    }
 
-    useEffect(()=>{getRecipe();},[]);
+    }, [id]); 
+
+    useEffect(() => {
+        getRecipe();
+    }, [getRecipe]);
 
   return (
     <div className="recipe-container">
