@@ -13,4 +13,3 @@ const useUserContext = () => {
     return context;
 };
 
-export default useUserContext;
