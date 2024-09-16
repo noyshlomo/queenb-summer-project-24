@@ -1,5 +1,5 @@
 import { useState } from 'react';
-//import './Signup.css'; // Importing the CSS file for the signup form
+import './Signup.css'; // Importing the CSS file for the signup form
 
 const Signup = () => {
     const [email, setEmail] = useState('');
