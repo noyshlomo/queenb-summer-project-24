@@ -4,6 +4,10 @@ import { useParams } from 'react-router-dom';
 import { useRecipesContext } from '../../hooks/useRecipesContext';
 import Modal from '../../components/Modal/Modal';
 
+/*
+1. need to add a successeful delete
+*/
+
 const Dashboard = () => {
     const [recipes, setRecipes] = useState([]);
     const [recipeToDelete, setRecipeToDelete] = useState(null); // For tracking which recipe to delete
