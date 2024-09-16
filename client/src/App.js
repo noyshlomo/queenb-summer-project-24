@@ -5,7 +5,7 @@ import styles from './styles/App.module.css';
 import Navbar from './components/Navbar/Navbar';
 import RecipePage from './pages/RecipePage/RecipePage';
 import SignupPage from './pages/Signup/SignupPage';
-import LoginPage from './pages/Login/LoginPage';
+import LoginPage from './pages/Login/loginPage';
 
 function App() {
   return (
