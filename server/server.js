@@ -2,14 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-<<<<<<< HEAD
-const recipesRouter = require ('./routes/recipesRouter')
-=======
 
 const recipeRouter = require ('./routes/recipeRouter')
 const usersRoutes = require('./routes/user')
 
->>>>>>> af3cad6a5586370ace36b214601df4560e6f9630
 
 dotenv.config();
 
@@ -31,7 +27,6 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.use('/api/recipes', recipesRouter)
 app.use('/api/recipe', recipeRouter)
 app.use('/api/user', usersRoutes)
 

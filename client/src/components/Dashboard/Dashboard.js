@@ -8,9 +8,11 @@ const Dashboard = () => {
     const { userId } = useParams();
     const getRecipe = async() => {
         try{
-            const response = await fetch(`http://localhost:5000/api/recipes/${ userId }`)
+            const response = await fetch(`http://localhost:5000/api/recipe/profile/${ userId }`)
+    
             if(!response.ok){
                 throw new Error('Failed to fetch recipe')
+             
             }
             const data = await response.json();
             console.log(data)
