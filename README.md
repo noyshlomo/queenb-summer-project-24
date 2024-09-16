@@ -103,13 +103,7 @@ This feature demonstrates the integration of the frontend with the backend and c
 cd ../server
 ```
    - Create a `.env` file in the server.
-   - Copy `.env.example` content to the `.env` file.
-   - Here is an example of what your `.env` file might look like:
-
-```env
-MONGO_URI=mongodb+srv://myUser:myPassword@cluster0.mongodb.net/myDatabase?retryWrites=true&w=majority
-PORT=5000
-```
+   - Copy the content of `.env.example` file under the server folder to the `.env` file.
 
 2. Run the Backend Server in development mode:
 ```bash
@@ -123,15 +117,9 @@ npm run dev
 cd ../client
 ```
    - Create a `.env` file in the client.
-   - Add a varible named `REACT_APP_API_URL` - this URL should point to your backend server.
-   - Here is an example of what your `.env` file might look like:
-
-```env
-REACT_APP_API_URL=http://localhost:8000/api
-```
+   - Copy the content of `.env.example` file under the client folder to the `.env` file.
 
 2. Run the Frontend Client:
-   - Start the client by navigating to the client directory and running:
 ```bash
 npm start
 ```
@@ -203,10 +191,7 @@ mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=t
 
 8. **Update Your server .env File**:
    - In your `server` directory, create a `.env` file if it doesn't already exist.
-   - Add your MongoDB connection string to the `.env` file, replacing `<username>` and `<password>` with your database user credentials:
-```env
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
-```
+   - Add your MongoDB connection string to the `.env` file as your `MONGO_URI`.
 
 #### Testing the Connection
 1. Start the Server:
@@ -251,16 +236,17 @@ cd server
 
 ```env
 MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/libraryDB?retryWrites=true&w=majority
+CLIENT_URL=http://localhost:3000
 PORT=5000
 ```
-   - Replace `<username>` and `<password>` with the credentials you created for your MongoDB Atlas database.
-   - `libraryDB` should be replaced with the name of your database if different.
+   - Replace `MONGO_URI` to be your created Atlas DB connaction string
    - You can change `5000` to any port number you prefer.
+   - Make sure `CLIENT_URL` is set to your client current port.
 
 #### Setup Client .env file
 The client .env file should contain the following environment variables:
 
-1. **REACT_APP_API_URL**: This variable contains the URL of your backend API. It tells your client where to send requests to interact with the server. By default, this should be set to http://localhost:8000/api, but you should change it to match your server's actual URL if different.
+1. **REACT_APP_API_URL**: This variable contains the URL of your backend API. It tells your client where to send requests to interact with the server. By default, this should be set to http://localhost:5000/api, but you should change it to match your server's actual URL if different.
 
 **How to Set Up Your .env Client File**
 
@@ -275,9 +261,9 @@ cd client
    - Open the .env file in a text editor.
    - Add the following line, replacing the placeholder with your actual server URL:
 ```env
-REACT_APP_API_URL=http://localhost:8000/api
+REACT_APP_API_URL=http://localhost:5000/api
 ```
-Replace http://localhost:8000/api with the URL of your backend server if it is running on a different host or port.
+Replace http://localhost:5000/api with the URL of your backend server if it is running on a different host or port.
 
 ## Usage
 
@@ -296,7 +282,7 @@ cd server
 ```bash
 npm run dev
 ```
-   - By default, the server will run on `http://localhost:8000`. You can change the port by modifying the `PORT` variable in your `.env` file.
+   - By default, the server will run on `http://localhost:5000`. You can change the port by modifying the `PORT` variable in your `.env` file.
 
 3. Verify Server Operation:
    - Open a browser or API client (like [Postman](https://www.postman.com/)) to test your API endpoints.
