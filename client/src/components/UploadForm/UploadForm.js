@@ -1,14 +1,18 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import api from "../../services/api";
 import styles from './UploadForm.module.css';
 import FormInput from '../FormInput/FormInput';
 import FormTextArea from "../FormTextArea/FormTextArea";
 import ListInput from "../ListInput/ListInput";
 import MultiSelect from "../MultiSelect/MultiSelect";
-import CancelDisplay from "../CancelDisplay/CancelDisplay";
+import CancelPopup from "../CancelPopup/CancelPopup";
 import SuccessPopup from "../SuccessPopup/SuccessPopup";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
+import ProgressBar from "../ProgressBar/ProgressBar";
+import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
+//import useUserContext from "../../hooks/useUserContext";
 
+// Component for uploading recipes through a form
 const UploadForm = () => {
   // Declaring state variables for form inputs
   const [title, setTitle] = useState('');
@@ -19,20 +23,38 @@ const UploadForm = () => {
   const [tags, setTags] = useState([]); 
   const [imgLink, setImgLink] = useState('');
 
-  // Declaring state variables for error handling 
+  // Declaring state variable for error handling 
   const [error, setError] = useState(null);
+
+  // Declaring state variable for empty fields not filled before submission, for validation
   const [emptyFields, setEmptyFields] = useState([]);
 
-  // Declaring state variables for submitting, cancelling, and success states
+  // Declaring state variables for confirming submission, cancelling submission, and success of the upload
   const [showCancel, setShowCancel] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  // Declaring state variable for progress bar state
+  const [progress, setProgress] = useState(0);
+
+  // Accessing user via the costume hook
+  //const {user} = useUserContext();
+  // Assuming userId is stored in user._id - saving the userId for later use in handleSubmit
+  //const userId = user?._id;
   
-  // Function to handle form input changes
-  const handleSubmit = async (e) => {
+  // Setting up effect for handling submit after progress bar completion
+  useEffect(() => {
+    if (progress === 100) {
+      setShowSuccess(true);
+    }
+  }, [progress]);
+
+
+  // Function for the first step after the user clicks the submit button:
+  // Starting the process when the form is submitted, first validating fields and confirming the submission
+  const startProcess = async (e) => {
     e.preventDefault();
 
-    const userId = 'user123'; // TODO: fix to the user's id
-  
     // Defining required fields for the recipe
     const requiredFields = {
       title,
@@ -53,26 +75,63 @@ const UploadForm = () => {
     
     // Additional validation for the ingredients and prepSteps fields:
     // Checking if the first item in the ingredients or prepSteps array is empty string
-    if (ingredients[0] === "" && ingredients.length === 1){
-      emptyFieldsForRecipe.push('ingredients');
+    // and also checking if there are any empty strings in the ingredients or prepSteps array
+    // Note: trim is a function that removes leading and trailing whitespace from a string
+    if ((ingredients.some(item => item.trim() === ''))||(ingredients[0] === '' && ingredients.length === 1)){
+      emptyFieldsForRecipe.push("ingredients");
     }
-    if (prepSteps[0] === "" && prepSteps.length === 1){
-      emptyFieldsForRecipe.push('prepSteps');
+    if ((prepSteps.some(item => item.trim() === ''))||(prepSteps[0] === '' && prepSteps.length === 1)){
+      emptyFieldsForRecipe.push("prepSteps");
     }
 
-    console.log('empty fields:', emptyFieldsForRecipe);
-
-    // If there are empty fields, updating the error state and returning
+    // If there are empty fields, updating the emptyFields indicator and returning
     if (emptyFieldsForRecipe.length > 0) {
-      setError('All fields are required');
       setEmptyFields(emptyFieldsForRecipe);
       return;
     }
   
-    // Clearing the error and emptyFields if validation passes
-    setError(null);
+    // Clearing the emptyFields if validation passes
     setEmptyFields([]);
+    
+    // Changing the showConfirm indicator to true, for showing confirmation popup
+    setShowConfirm(true);
+  };
   
+  // Function for second step:
+  // After confirming the submission, this step is for showing the progress bar and submitting the form
+  const handleConfirmSubmit = async () => {
+    // Changing the showConfirm indicator to false, for hiding confirmation popup
+    setShowConfirm(false); 
+    // Showing the progress bar by changing the progress bar state to 10
+    setProgress(10); 
+
+    // Simulating the progress bar to simulate loading process, in intervals of 10
+    let simulatedProgress = 0;
+    // Note: setInterval is a JS function that calls a function or evaluates an expression at specified intervals
+    const interval = setInterval(() => {
+      // Incrementing the progress bar state by 10 every 200 milliseconds (0.2 seconds)
+      simulatedProgress += 10;
+      // Incrementing the progress bar state for showing the updated progress bar state
+      setProgress(simulatedProgress);
+
+      // if the progress bar has reached 100%, clearing the interval and submitting the form
+      if (simulatedProgress >= 100) {
+        // clearInterval is a JS function. it stops the interval from running any further by clearing it
+        clearInterval(interval);
+        // Submitting the form by in the handleSubmit function
+        handleSubmit();
+      }
+    }, 200); 
+  };
+
+  
+
+  // Function for the third step:
+  // Handling form submission, by sending the recipe data to the server and showing success popup
+  const handleSubmit = async () => {
+
+    const userId = 'user222'; // TODO: fix to the user's id once the user login front is implemented
+
     // Defining the recipe object
     const recipe = {
       title,
@@ -86,37 +145,9 @@ const UploadForm = () => {
       userId
     };
     
-    console.log('tags submitted:', tags);
     // Making a POST request to the server to create the new recipe
-    // const response = await fetch('http://localhost:5000/api/recipe/', {
-    //   method: 'POST',
-    //   body: JSON.stringify(recipe),
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // });
-
-    // Handling response from server
-    //const json = await response.json();
-  
-    // Handling errors or empty fields in the response from the server
-    //   if (!response.ok) {
-    //     setError(json.error);
-    //     setEmptyFields(json.emptyFields || []);
-    //   } else {
-    //     // Clearing form inputs if successful
-    //     setTitle('');
-    //     setPrepTime(0);
-    //     setDescription('');
-    //     setIngredients([]);
-    //     setPrepSteps([]);
-    //     setTags([]);
-    //     setImgLink('');
-    //   }
-    // };
-
     try {
-      axios.post('http://localhost:5000/api/recipe/', recipe);
+      await api.post('/recipe/', recipe);
       // Clearing form inputs if successful
       setTitle('');
       setPrepTime(0);
@@ -127,16 +158,19 @@ const UploadForm = () => {
       setImgLink('');
       setShowSuccess(true);
       setShowCancel(false);
-    } catch (err) {
+      setProgress(0);
+   } catch (err) {
+      // Handling server errors
       setError(err);
       setEmptyFields(emptyFields || []);
       return;
-    }
+    } 
   }
+
   // Returning the upload form component
   return (
     <div>
-      <form className={styles.upload} onSubmit={handleSubmit}>
+      <form className={styles.upload} onSubmit={startProcess}>
         <h2>Recipe Details:</h2>
           <FormInput 
             label="Title:*" 
@@ -167,13 +201,15 @@ const UploadForm = () => {
             setItems={setIngredients} 
             emptyFields={emptyFields} 
             fieldName="ingredients"
+            required={showConfirm}
           />
           <ListInput 
             label="Preparation Steps:*" 
             items={prepSteps} 
             setItems={setPrepSteps} 
             emptyFields={emptyFields} 
-            fieldName="prepSteps" 
+            fieldName="prepSteps"
+            required={showConfirm} 
           />
           <MultiSelect 
             label="Tags:*"
@@ -190,35 +226,56 @@ const UploadForm = () => {
             emptyFields={emptyFields} 
             fieldName="imgLink" 
           />
+          {/* button for raising a cancel popup, by setting showCancel to true */}
           <button type="button" onClick={() => setShowCancel(true)}>cancel</button>
-          <button type="submit" onClick={handleSubmit}>submit</button> {/*TODO: add functionality to make sure the user wants to save + progress bar loading */}
-         
-          {showCancel && 
-          <CancelDisplay
-            title = {setTitle}
-            prepTime= {setPrepTime}
-            description= {setDescription}
-            ingredients= {setIngredients}
-            prepSteps= {setPrepSteps}
-            tags= {setTags}
-            imgLink= {setImgLink}
-            error= {setError}
-            emptyFields= {setEmptyFields}
-            showCancel = {setShowCancel}
-          />
-          }
-          
-          {error && 
-          // <div className= {styles.error}>{error}
-          // </div>
-          <ErrorPopup 
-          error={setError} />
+          <button type="submit" onClick={startProcess}>submit</button> 
+
+          {/* if progress is greater than 0 and up to 100, showing the progress bar */}
+          {progress > 0 && progress <= 100 && 
+            <ProgressBar 
+            progress={progress} 
+            />
           }
 
+          {/* if cancel button was pressed (showCancel is true), showing the cancel popup */}
+          {showCancel && 
+            <CancelPopup
+              title = {setTitle}
+              prepTime= {setPrepTime}
+              description= {setDescription}
+              ingredients= {setIngredients}
+              prepSteps= {setPrepSteps}
+              tags= {setTags}
+              imgLink= {setImgLink}
+              error= {setError}
+              emptyFields= {setEmptyFields}
+              showCancel = {setShowCancel}
+            />
+          }
+          
+          {/* if error is true (an error occurred in the server), showing the error popup */}
+          {error && 
+            <ErrorPopup 
+            error={setError} 
+            />
+          }
+
+          {/* if post request succeeded in handleSubmit, showing the success popup */}
           {showSuccess && 
             <SuccessPopup
-            showSuccess = {setShowSuccess} />
+            showSuccess = {setShowSuccess} 
+            />
           }
+
+          {/* if submit button was pressed, and the required fields are filled, showing the confirmation popup */}
+          {showConfirm &&
+            <ConfirmationPopup 
+            confirm={showConfirm} 
+            onConfirm={handleConfirmSubmit} 
+            onCancel={setShowConfirm} 
+            />
+          }
+
         </form>      
   </div>
   )

@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
 import Navbar from './components/Navbar/Navbar';
-//import RecipePage from './pages/RecipePage/RecipePage';
 import UploadRecipePage from './pages/UploadRecipePage/UploadRecipePage';
+
 
 function App() {
   return (
@@ -16,11 +16,6 @@ function App() {
         <main className={styles.main}>
           <Routes>
             <Route path="/" element={<Home />} />
-          </Routes>
-          <Routes>
-            {/* <Route path="/:id" element={<RecipePage/>} /> */}
-          </Routes>
-          <Routes>
             <Route path="/upload" element={<UploadRecipePage/>} />
           </Routes>
         </main>

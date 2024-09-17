@@ -10,7 +10,18 @@ label {
     border-radius: 4px;
     resize: vertical;
   }
+  .errorBorder {
+    border: 1px solid red;
+  }
   
+  .errorText {
+    color: red;
+    margin-top: 0.25rem;
+    display: block; 
+    text-align: left; 
+  }
+
+
   textarea.error {
     border-color: red;
   }

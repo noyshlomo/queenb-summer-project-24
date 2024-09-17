@@ -21,7 +21,7 @@ const ErrorPopup = ({error}) => (
         <h2 style={{ marginBottom: '10px', color: 'red'}}>Error</h2>
         <p>An Error Has Occurred - please try again later </p>
         <a 
-          href={`/upload/`}
+          href={`/`}
           onClick={error(false)} 
           style={{
             display: 'inline-block',
@@ -33,7 +33,7 @@ const ErrorPopup = ({error}) => (
             borderRadius: '3px',
           }}
         >
-          Back to Upload Page
+          Back to Home Page
         </a>
       </div>
     </div>

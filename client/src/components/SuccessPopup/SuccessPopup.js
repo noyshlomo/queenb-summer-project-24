@@ -1,50 +1,22 @@
+import React from 'react';
+import styles from '../Popups/Popups.module.css';
 
+// SuccessPopup component displays a success message when a new recipe is uploaded
+// showSuccess prop controls whether the popup is displayed or not
 const SuccessPopup = ({showSuccess}) => (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-      <div style={{
-        backgroundColor: 'white',
-        padding: '20px',
-        borderRadius: '5px',
-        maxWidth: '400px',
-        textAlign: 'center',
-      }}>
+    <div className={styles.overlay}>
+      <div className={styles.popupBox}>
         <h2 style={{ marginBottom: '10px' }}>Recipe Uploaded Successfully!</h2>
         <p>Your new recipe has been added.</p>
         <a 
-          href={`/recipes/`} 
-          style={{
-            display: 'inline-block',
-            margin: '10px 0',
-            padding: '10px',
-            backgroundColor: '#4CAF50',
-            color: 'white',
-            textDecoration: 'none',
-            borderRadius: '3px',
-          }}
+          href={`/`} 
+          className={`${styles.button} ${styles.successButton}`}
         >
-          View All Recipes
+          View All Recipes In Home Page
         </a>
         <button 
-          onClick={() => showSuccess(false)}
-          style={{
-            display: 'block',
-            width: '100%',
-            padding: '10px',
-            backgroundColor: '#f0f0f0',
-            border: 'none',
-            borderRadius: '3px',
-            cursor: 'pointer',
-          }}
+          onClick={() => showSuccess(false)} // Hide the success popup when the button is clicked
+          className={`${styles.button} ${styles.closeButton}`}
         >
           Close
         </button>

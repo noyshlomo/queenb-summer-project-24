@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <nav>
         <Link to="/"><img src="/project-logo.png" alt="Logo" className={styles.appLogo}/></Link>
-        <Link to="/upload" >Upload</Link>
+        <Link to="/upload" className={styles.appLink}>Upload</Link>
     </nav>
   )
 }
