@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
 import UserProfile from './pages/UserProfile/UserProfile';
 import Navbar from './components/Navbar/Navbar';
 import RecipePage from './pages/RecipePage/RecipePage';
+import UploadRecipePage from './pages/UploadRecipePage/UploadRecipePage';
 
 
 function App() {
