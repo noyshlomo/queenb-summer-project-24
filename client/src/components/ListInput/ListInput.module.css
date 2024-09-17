@@ -1,13 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
 .input-container {
-  margin-bottom: 1rem;
-  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
 }
 
 .input-container input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 2px solid #d3d3d3;
-  border-radius: 4px;
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  margin-right: 8px;
+  box-sizing: border-box;
 }
 
 .error {
@@ -15,24 +31,41 @@
 }
 
 .errorText {
+  width: 100%;
   color: red;
+  font-size: 0.875rem;
   margin-top: 0.25rem;
-  display: block; 
-  text-align: left; 
+  text-align: left;
 }
 
-.remove-button {
-  position: absolute;
-  right: 0;
-  top: 0;
+.removeButton {
   background-color: #b3613c;
-  color: #fff;
+  color: white;
   border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  margin-left: 2px;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
-/* .error-message {
-  color: red;
-  font-size: 0.75rem;
-} */
+.addButton {
+  background-color: #f9f9f9;
+  color: white;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.addButton:hover {
+  background-color: #f9f9f9;
+}
+
+
+
+
+
 

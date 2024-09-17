@@ -1,32 +1,41 @@
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 2px solid #d3d3d3;
-    border-radius: 4px;
-  }
-  .errorBorder {
-    border: 1px solid red;
-  }
-  
-  .errorText {
-    color: red;
-    margin-top: 0.25rem;
-    display: block; 
-    text-align: left; 
-  }
-  
-  input.error {
-    border-color: red;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 0.75rem;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
 
-  
+label {
+  display: block; 
+  width: 100%;
+  max-width: 500px; 
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+input, select {
+  width: 100%;
+  max-width: 500px; 
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  box-sizing: border-box; 
+}
+
+.errorBorder {
+  border-color: red;
+}
+
+.errorText {
+  width: 100%;
+  max-width: 500px;
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  text-align: left;
+}
+
