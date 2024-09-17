@@ -1,28 +1,84 @@
-/* Apply styling to ensure consistent appearance */
 .error {
-    border: 2px solid red !important;
-  }
-  
-  .errorBorder {
-    border: 1px solid red;
-  }
-  
-  .errorText {
-    color: red;
-    margin-top: 0.25rem;
-    display: block; 
-    text-align: left; 
-  }
+  border: 2px solid red !important;
+}
 
-  .react-select__control {
-    border-color: #d3d3d3;
-  }
-  
-  .react-select__control.error {
-    border-color: red !important;
-  }
-  
-  .react-select__indicator-separator {
-    background-color: red;
-  }
-  
+.errorBorder {
+  border: 1px solid red;
+}
+
+.errorText {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  text-align: left;
+  width: 100%;
+  max-width: 200px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.select-container {
+  display: flex;
+  justify-content: center; /* Center the select box horizontally */
+  width: 100%; /* Full width */
+  margin-bottom: 0.5rem;
+}
+
+.react-select__control {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: none;
+  max-width: 200px !important;
+  background-color: #f9f9f9;
+  width: 100%; 
+}
+
+.react-select__control:hover {
+  border-color: #888;
+}
+
+.react-select__control--is-focused {
+  border-color: #888;
+}
+
+.react-select__control.error {
+  border-color: red !important;
+}
+
+.react-select__indicator-separator {
+  background-color: #ccc;
+}
+
+.react-select__menu {
+  max-width: 200px !important;
+}
+
+.react-select__value-container {
+  padding: 5px;
+}
+
+.react-select__multi-value {
+  background-color: #e4e4e4;
+}
+
+.react-select__multi-value__label {
+  color: #333;
+}
+
+.react-select__multi-value__remove {
+  color: #888;
+}
+
+.react-select__multi-value__remove:hover {
+  background-color: #ccc;
+  color: #333;
+}
+
+

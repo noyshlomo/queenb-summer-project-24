@@ -79,7 +79,7 @@ const ListInput = ({ label, items, setItems, emptyFields, fieldName, required })
         ))}
   
         {/* Button to add a new input field (new empty item in the list) */}
-        <button type="button" onClick={addItem}>
+        <button type="button" onClick={addItem} className={styles.addButton} >
           Add {label.slice(0, -3)} {/* Removing the characters from the label for singular field name (removing the "s:*") */}
         </button>
       </>

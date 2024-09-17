@@ -16,7 +16,7 @@ import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
 const UploadForm = () => {
   // Declaring state variables for form inputs
   const [title, setTitle] = useState('');
-  const [prepTime, setPrepTime] = useState(0);
+  const [prepTime, setPrepTime] = useState(1);
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]); 
   const [prepSteps, setPrepSteps] = useState([]); 
@@ -37,6 +37,7 @@ const UploadForm = () => {
   // Declaring state variable for progress bar state
   const [progress, setProgress] = useState(0);
 
+  
   // Accessing user via the costume hook
   //const {user} = useUserContext();
   // Assuming userId is stored in user._id - saving the userId for later use in handleSubmit
@@ -147,10 +148,10 @@ const UploadForm = () => {
     
     // Making a POST request to the server to create the new recipe
     try {
-      await api.post('/recipe/', recipe);
+      await api.post('/recipe/', recipe, );
       // Clearing form inputs if successful
       setTitle('');
-      setPrepTime(0);
+      setPrepTime(1); // do not want to allow non positive prep time
       setDescription('');
       setIngredients([]);
       setPrepSteps([]);
@@ -226,10 +227,11 @@ const UploadForm = () => {
             emptyFields={emptyFields} 
             fieldName="imgLink" 
           />
+          <div className="button-container">
           {/* button for raising a cancel popup, by setting showCancel to true */}
           <button type="button" onClick={() => setShowCancel(true)}>cancel</button>
           <button type="submit" onClick={startProcess}>submit</button> 
-
+          </div>
           {/* if progress is greater than 0 and up to 100, showing the progress bar */}
           {progress > 0 && progress <= 100 && 
             <ProgressBar 

@@ -41,6 +41,26 @@ const MultiSelect = ({ label, value, onChange , emptyFields, fieldName }) => {
                 onChange={handleChange} // Calling handleChange to extract the current values selected by the user
                 className={emptyFields.includes(fieldName) ? styles.error : ''} // Adding error border if an error occurred
                 options={options}
+                styles={{
+                    container: (provided) => ({
+                      ...provided,
+                      maxWidth: '500px',
+                      display: 'flex',
+                      justifyContent: 'center', 
+                      width: '100%',
+                    }),
+                    control: (provided) => ({
+                      ...provided,
+                      maxWidth: '500px', 
+                      width: '100%', 
+                      margin: '0 auto',
+                    }),
+                    menu: (provided) => ({
+                      ...provided,
+                      maxWidth: '500px', 
+
+                    }),
+                  }}
             />
             {isError && <span className={styles.errorText}>Required</span>} {/* if the field is empty, adding Required below it */}   
         </>
