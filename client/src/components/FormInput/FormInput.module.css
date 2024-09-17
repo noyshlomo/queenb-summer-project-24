@@ -9,6 +9,16 @@ label {
     border: 2px solid #d3d3d3;
     border-radius: 4px;
   }
+  .errorBorder {
+    border: 1px solid red;
+  }
+  
+  .errorText {
+    color: red;
+    margin-top: 0.25rem;
+    display: block; 
+    text-align: left; 
+  }
   
   input.error {
     border-color: red;
@@ -18,4 +28,5 @@ label {
     color: red;
     font-size: 0.75rem;
   }
+
   

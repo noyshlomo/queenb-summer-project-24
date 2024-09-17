@@ -8,6 +8,7 @@ import RecipePage from "./pages/RecipePage/RecipePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import FiltersPage from "./pages/Filters/FiltersPage";
 
+
 function App() {
   return (
     <BrowserRouter>

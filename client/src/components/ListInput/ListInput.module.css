@@ -14,6 +14,13 @@
   border-color: red;
 }
 
+.errorText {
+  color: red;
+  margin-top: 0.25rem;
+  display: block; 
+  text-align: left; 
+}
+
 .remove-button {
   position: absolute;
   right: 0;
@@ -24,8 +31,8 @@
   cursor: pointer;
 }
 
-.error-message {
+/* .error-message {
   color: red;
   font-size: 0.75rem;
-}
+} */
 

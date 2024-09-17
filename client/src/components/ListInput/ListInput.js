@@ -2,11 +2,17 @@ import { useEffect } from 'react';
 import styles from './ListInput.module.css';
 
 // ListInput component to dynamically manage a list of string inputs
+// props:
+// label: The label for the list input field in the form
+// items - the state variable, which is a list of strings representing the inputs in the list
+// setItems - the set function to update the state variable with the new list of inputs
+// emptyFields - the state variable to store any empty fields not filled in the form
+// fieldName - the name of the current field in the form (as a string)
+// required - a boolean indicating whether the field is required or not, in the case of pressing the submit button 
 const ListInput = ({ label, items, setItems, emptyFields, fieldName, required }) => {
   
     // Function to add a new empty input field (an empty string in the list)
     const addItem = () => {
-      // Adding an empty string to the items array if there are already items or if it's empty
       setItems([...items, ""]); 
     };
   
@@ -14,8 +20,8 @@ const ListInput = ({ label, items, setItems, emptyFields, fieldName, required })
     const updateItem = (index, value) => {
       // Creating a copy of the current items
       const newItems = [...items]; 
-      // Updating the item at the specified index with the new value
-      newItems[index] = value;
+      // Updating the item at the specified index with the new value, removing any leading or trailing whitespace
+      newItems[index] = value.trim();
       // Updating the state with the modified array
       setItems(newItems); 
     };
@@ -41,36 +47,40 @@ const ListInput = ({ label, items, setItems, emptyFields, fieldName, required })
       }
     }, [items, setItems]);
 
-    // Checking if the field is required and empty --- maybe not relevant!!!!!
-    const isEmpty = required && items.every(item => item.trim() === "");
-
     return (
       <>
         <label>{label}</label>
         
-        {/* Mapping through the items array and generating an input field for each item */}
+        {/* Mapping through the items array and generating an input field for each item. */}
         {items.map((item, index) => (
-          <div key={index} className="input-container">
+          <div key={index} className={styles.inputContainer}> 
+          {/* Automatically provided 'index' represents the position of the current item in the array.
+            It is passed as the second argument to the 'map' function, making it available to use.
+            React relies on this 'key' to uniquely identify and track elements in the list. */}
             <input
               type="text" 
               value={item} 
               onChange={(e) => updateItem(index, e.target.value)} // Updating the value in the list when the input changes
               // Error handling: applying 'error' class if the fieldName is included in emptyFields
-              className={emptyFields.includes(fieldName) ? styles.error : ''} 
+              className={emptyFields.includes(fieldName) && item.trim() === '' ? styles.error : ''} 
             />
-            {/* Conditionally rendering the remove button if the item is not the first one */}
+            {/* Conditionally rendering the remove button if the item is not the first one (the index in the list is greater than 0) */}
             {index > 0 && (
-              <button type="button" onClick={() => removeItem(index)} className="remove-button">
+              <button type="button" onClick={() => removeItem(index)} className={styles.removeButton}>
                 X
               </button>
             )}
-            <div> {(emptyFields.includes(fieldName) || isEmpty) ? <div className="error-message">Required</div> : ''} </div>
-          </div>
+            {/* Showing Required if the item is empty and the submit button was pressed, 
+            or if this field is included in emptyFields and considered not filled for submission */}
+            { (emptyFields.includes(fieldName) || (item.trim() === '' && required)) && 
+              <div className={styles.errorText}>Required</div>
+            }
+            </div>
         ))}
   
         {/* Button to add a new input field (new empty item in the list) */}
         <button type="button" onClick={addItem}>
-          Add {label.slice(0, -3)} {/* Removing the characters from the label for singular field name */}
+          Add {label.slice(0, -3)} {/* Removing the characters from the label for singular field name (removing the "s:*") */}
         </button>
       </>
     );
