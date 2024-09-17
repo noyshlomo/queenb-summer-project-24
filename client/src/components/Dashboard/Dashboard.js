@@ -13,15 +13,6 @@ const Dashboard = () => {
     const [recipeToDelete, setRecipeToDelete] = useState(null); // For tracking which recipe to delete
     const [showModal, setShowModal] = useState(false); // To show or hide the modal
     const { userId } = useParams();
-<<<<<<< HEAD
-    const { dispatch } = useRecipesContext();
-
-    const getRecipes = async () => {
-        try {
-            const response = await fetch(`http://localhost:5000/api/recipes/${userId}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch recipes');
-=======
     const getRecipe = async() => {
         try{
             const response = await fetch(`http://localhost:5000/api/recipe/profile/${ userId }`)
@@ -29,7 +20,6 @@ const Dashboard = () => {
             if(!response.ok){
                 throw new Error('Failed to fetch recipe')
              
->>>>>>> 66737b68c8683acd16f2f78dc3c25abc1a7d2e1c
             }
             const data = await response.json();
             setRecipes(data);
