@@ -21,7 +21,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             {/* Dynamic route for recipe, placed after specific ones */}
-            <Route path="/recipe/:id" element={<RecipePage />} />
+            <Route path="/:id" element={<RecipePage />} />
           </Routes>
         </main>
         <footer className={styles.footer}>
