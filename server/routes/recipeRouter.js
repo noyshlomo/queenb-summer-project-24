@@ -9,7 +9,7 @@ recipeRouter.get('/:id', getRecipe);
 recipeRouter.get('/profile/:userId',getAllUserRecipes);
 
 //DELETE recipe by id
-recipesRouter.delete('/profile/:id',deleteRecipeById);
+recipeRouter.delete('/profile/:id',deleteRecipeById);
 
 //POST request to create a new recipe
 recipeRouter.post('/', createRecipe);

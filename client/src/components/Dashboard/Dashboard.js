@@ -1,40 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback  } from 'react';
 import styles from './Dashboard.module.css';
 import { useParams } from 'react-router-dom';
 import { useRecipesContext } from '../../hooks/useRecipesContext';
 import Modal from '../../components/Modal/Modal';
-
-/*
-1. need to add a successeful delete
-*/
 
 const Dashboard = () => {
     const [recipes, setRecipes] = useState([]);
     const [recipeToDelete, setRecipeToDelete] = useState(null); // For tracking which recipe to delete
     const [showModal, setShowModal] = useState(false); // To show or hide the modal
     const { userId } = useParams();
-    const getRecipe = async() => {
-        try{
-            const response = await fetch(`http://localhost:5000/api/recipe/profile/${ userId }`)
-    
-            if(!response.ok){
-                throw new Error('Failed to fetch recipe')
-             
+    const { dispatch } = useRecipesContext(); 
+  
+    // Memoize getRecipe function
+    const getRecipe = useCallback(async () => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/recipe/profile/${userId}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch recipe');
             }
             const data = await response.json();
             setRecipes(data);
         } catch (err) {
             console.log(err);
         }
-    };
-
-    useEffect(() => {
-        getRecipes();
     }, [userId]);
 
+
+    // Use the memoized getRecipe function
     useEffect(() => {
-        console.log('Recipes state updated:', recipes);
-    }, [recipes]);
+        getRecipe();
+    }, [getRecipe]);
 
     // Show the modal and store the recipe to be deleted
     const handleDeleteClick = (recipeId) => {
@@ -42,33 +37,30 @@ const Dashboard = () => {
         setShowModal(true); // Show the modal
     };
 
-    // Confirm the deletion and delete the recipe
     const confirmDelete = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/recipes/' + recipeToDelete, {
+            const response = await fetch('http://localhost:5000/api/recipe/profile/' + recipeToDelete, {
                 method: 'DELETE',
             });
-
+    
             if (!response.ok) {
                 throw new Error('Failed to delete the recipe');
             }
-
+    
             const json = await response.json();
-            console.log('Deleted recipe:', json);
-
-            // Update the local state by filtering out the deleted recipe
+            // console.log('Deleted recipe:', json);
+    
             setRecipes((prevRecipes) =>
                 prevRecipes.filter((recipe) => recipe._id !== recipeToDelete)
             );
-
-            // Dispatch action to remove the recipe from global state/context if necessary
+    
             dispatch({ type: 'DELETE_RECIPE', payload: json });
-            
-            setShowModal(false); // Hide the modal after deletion
+            setShowModal(false);
         } catch (error) {
-            console.log('Error deleting recipe:', error);
+            console.error('Error deleting recipe:', error);
         }
     };
+    
 
     // Close the modal without deleting the recipe
     const closeModal = () => {
