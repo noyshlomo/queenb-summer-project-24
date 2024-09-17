@@ -7,6 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import RecipePage from './pages/RecipePage/RecipePage';
 
 
+
 function App() {
   return (
     <BrowserRouter>
