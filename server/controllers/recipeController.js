@@ -1,8 +1,8 @@
-const RecipeDB = require('../models/RecipeModel');
+const Recipe = require('../models/RecipeModel');
 
 const getAllRecipes = async(req,res) => {
     try{
-        const recipes = await RecipeDB.find();
+        const recipes = await Recipe.find();
         res.status(200).json(recipes);
     }
     catch(err) {
@@ -11,9 +11,32 @@ const getAllRecipes = async(req,res) => {
 
 }
 
+// get user profile 
+const getAllUserRecipes = async (req, res) => {
+    const { userId } = req.params
+
+    try {
+        // Fetch recipes from the database
+    const recipe = await Recipe.find({ userId: userId });
+    
+    // If no recipes found, return 404
+    if(!recipe){
+        console.log('No recipes found for this user')
+        return res.status(404).json({error: 'No recipes found for this user'})
+    }
+    // Return the recipes
+    res.status(200).json(recipe)
+
+    }
+    catch (error) {
+        console.error('Error fetching recipes:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
 const getRecipe = async(req,res) => {
     try{
-        const recipe = await RecipeDB.findById(req.params.id);
+        const recipe = await Recipe.findById(req.params.id);
         res.status(200).json(recipe);
     }
     catch(err) {
@@ -42,7 +65,7 @@ const createRecipe = async (req, res) => {
 
     try {
          // adding the new recipe to the database
-        const recipe =  await RecipeDB.create({title, prepTime, imgLink, submissionTime, description, ingredients, prepSteps, tags, userId});
+        const recipe =  await Recipe.create({title, prepTime, imgLink, submissionTime, description, ingredients, prepSteps, tags, userId});
         // returning the created recipe and a success message
         res.status(200).json({ recipe });
     } catch (err) {
@@ -54,5 +77,6 @@ const createRecipe = async (req, res) => {
 module.exports = {
     getAllRecipes,
     getRecipe,
+    getAllUserRecipes,
     createRecipe,
 }
