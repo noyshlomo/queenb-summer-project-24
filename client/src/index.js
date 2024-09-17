@@ -15,6 +15,5 @@ root.render(
       <App /> 
     </UserProvider>
     </RecipesContextProvider>
-
   </React.StrictMode>
 );
