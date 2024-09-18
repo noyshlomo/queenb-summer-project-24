@@ -50,13 +50,14 @@ const ListInput = ({ label, items, setItems, emptyFields, fieldName, required })
     return (
       <>
         <label>{label}</label>
-        
+        <div className={styles.container}>
         {/* Mapping through the items array and generating an input field for each item. */}
         {items.map((item, index) => (
           <div key={index} className={styles.inputContainer}> 
           {/* Automatically provided 'index' represents the position of the current item in the array.
             It is passed as the second argument to the 'map' function, making it available to use.
             React relies on this 'key' to uniquely identify and track elements in the list. */}
+            <div className={styles.inputWrapper}>
             <input
               type="text" 
               value={item} 
@@ -64,17 +65,18 @@ const ListInput = ({ label, items, setItems, emptyFields, fieldName, required })
               // Error handling: applying 'error' class if the fieldName is included in emptyFields
               className={emptyFields.includes(fieldName) && item.trim() === '' ? styles.error : ''} 
             />
-            {/* Conditionally rendering the remove button if the item is not the first one (the index in the list is greater than 0) */}
-            {index > 0 && (
-              <button type="button" onClick={() => removeItem(index)} className={styles.removeButton}>
-                X
-              </button>
-            )}
             {/* Showing Required if the item is empty and the submit button was pressed, 
             or if this field is included in emptyFields and considered not filled for submission */}
             { (emptyFields.includes(fieldName) || (item.trim() === '' && required)) && 
               <div className={styles.errorText}>Required</div>
             }
+            </div>
+            {/* Conditionally rendering the remove button if the item is not the first one (the index in the list is greater than 0) */}
+            {index > 0 && (
+              <button type="button" onClick={() => removeItem(index)} className={styles.removeButton}>
+                X
+              </button>
+            )} 
             </div>
         ))}
   
@@ -82,6 +84,7 @@ const ListInput = ({ label, items, setItems, emptyFields, fieldName, required })
         <button type="button" onClick={addItem} className={styles.addButton} >
           Add {label.slice(0, -3)} {/* Removing the characters from the label for singular field name (removing the "s:*") */}
         </button>
+        </div>
       </>
     );
   };

@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   margin-bottom: 1.5rem;
 }
@@ -15,7 +16,7 @@ label {
   text-align: left;
 }
 
-input, select {
+input {
   width: 100%;
   max-width: 500px; 
   padding: 0.5rem;
@@ -35,7 +36,7 @@ input, select {
   max-width: 500px;
   color: red;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
   text-align: left;
 }
 
