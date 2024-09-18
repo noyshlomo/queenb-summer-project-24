@@ -31,6 +31,7 @@ const MultiSelect = ({ label, value, onChange , emptyFields, fieldName }) => {
     return(
         <>
         <label>{label}</label>
+          <div className={styles.container}>
             <Select 
                 name={fieldName}
                 required
@@ -46,8 +47,9 @@ const MultiSelect = ({ label, value, onChange , emptyFields, fieldName }) => {
                       ...provided,
                       maxWidth: '500px',
                       display: 'flex',
-                      justifyContent: 'center', 
+                      //justifyContent: 'center', 
                       width: '100%',
+                      margin: 'auto',
                     }),
                     control: (provided) => ({
                       ...provided,
@@ -63,6 +65,7 @@ const MultiSelect = ({ label, value, onChange , emptyFields, fieldName }) => {
                   }}
             />
             {isError && <span className={styles.errorText}>Required</span>} {/* if the field is empty, adding Required below it */}   
+            </div>
         </>
     )
     

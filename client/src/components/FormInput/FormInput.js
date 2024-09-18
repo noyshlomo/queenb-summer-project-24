@@ -28,6 +28,7 @@ const FormInput = ({ label, type, value, onChange, emptyFields, fieldName }) => 
     return (
       <>
         <label>{label}</label>
+        <div className={styles.container}>
         <input
           type={type}
           required
@@ -36,6 +37,7 @@ const FormInput = ({ label, type, value, onChange, emptyFields, fieldName }) => 
           className={`${styles.input} ${isError ? styles.errorBorder : ''}`}  // Adding error border if an error occurred
         />
         {isError && <span className={styles.errorText}>Required</span>} {/* if the field is empty, adding Required below it */}
+        </div>
       </>
     );
   };

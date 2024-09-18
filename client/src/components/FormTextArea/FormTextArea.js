@@ -14,6 +14,7 @@ const FormTextArea = ({ label, value, onChange, emptyFields, fieldName }) => {
     return (
       <>
         <label>{label}</label>
+        <div className={styles.container}>
         <textarea
           required
           value={value}
@@ -21,6 +22,7 @@ const FormTextArea = ({ label, value, onChange, emptyFields, fieldName }) => {
            className={`${styles.textArea} ${isError ? styles.errorBorder : ''}`} // Adding error border if an error occurred
         />
          {isError && <span className={styles.errorText}>Required</span>} {/* if the field is empty, adding Required below it */}
+        </div>
       </>
     );
   };
