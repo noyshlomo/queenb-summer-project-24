@@ -16,7 +16,7 @@ import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
 const UploadForm = () => {
   // Declaring state variables for form inputs
   const [title, setTitle] = useState('');
-  const [prepTime, setPrepTime] = useState(1);
+  const [prepTime, setPrepTime] = useState(0);
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState([]); 
   const [prepSteps, setPrepSteps] = useState([]); 
@@ -151,7 +151,7 @@ const UploadForm = () => {
       await api.post('/recipe/', recipe, );
       // Clearing form inputs if successful
       setTitle('');
-      setPrepTime(1); // do not want to allow non positive prep time
+      setPrepTime(0); 
       setDescription('');
       setIngredients([]);
       setPrepSteps([]);

@@ -23,9 +23,6 @@ const CancelPopup = ({ title, prepTime, description, ingredients, prepSteps, tag
         error(null);
         emptyFields([]);
         showCancel(false);
-
-        // Redirecting the user to the home page after canceling the form submission
-        window.location.href = 'http://localhost:3000/';
         
     };
     
@@ -34,8 +31,10 @@ const CancelPopup = ({ title, prepTime, description, ingredients, prepSteps, tag
       <div className={styles.overlay}>
       <div className={styles.popupBox}>
           <h2 style={{ marginBottom: '10px' }}>Are you sure you want to cancel? This will clear the form.</h2>
-          <button onClick={handleCancel} className={`${styles.button} ${styles.successButton}`}>Yes</button>
-          <button onClick={() => showCancel(false)} className={`${styles.button} ${styles.cancelButton}`}>No</button>
+          <div className = {styles.buttonsContainer}>
+            <button onClick={handleCancel} className={`${styles.button} ${styles.successButton}`}>Yes</button>
+            <button onClick={() => showCancel(false)} className={`${styles.button} ${styles.cancelButton}`}>No</button>
+          </div>
       </div>
     </div>
     );

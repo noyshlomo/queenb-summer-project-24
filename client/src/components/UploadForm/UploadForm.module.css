@@ -41,18 +41,6 @@ button[type="button"] {
   border: 1px solid #b3613c;
   color: #b3613c;
 }
-/* input, textarea, select {
-  width: 100%;
-  margin-bottom: 2rem;
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-textarea {
-  resize: vertical;
-} */
 
 @media (max-width: 768px) {
   .upload {
