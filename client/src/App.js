@@ -5,6 +5,7 @@ import styles from './styles/App.module.css';
 import UserProfile from './pages/UserProfile/UserProfile';
 import Navbar from './components/Navbar/Navbar';
 import RecipePage from './pages/RecipePage/RecipePage';
+import UploadRecipePage from './pages/UploadRecipePage/UploadRecipePage';
 
 
 
@@ -27,6 +28,7 @@ function App() {
           </Routes>
           <Routes>
             <Route path="/:id" element={<RecipePage/>} />
+            <Route path="/upload" element={<UploadRecipePage/>} />
           </Routes>
         </main>
         <footer className={styles.footer}>
@@ -38,3 +40,4 @@ function App() {
 }
 
 export default App;
+
