@@ -15,8 +15,10 @@ const ConfirmationPopup = ({ confirm, onConfirm, onCancel }) => {
     <div className={styles.overlay}>
       <div className={styles.popupBox}>
         <h2 style={{ marginBottom: '10px' }}>Are you sure you want to submit the recipe?</h2>
-        <button onClick={onConfirm} className={`${styles.button} ${styles.successButton}`}>Yes</button>
-        <button onClick={() => onCancel(false)} className={`${styles.button} ${styles.cancelButton}`}>No</button>
+        <div className = {styles.buttonsContainer}>
+          <button onClick={onConfirm} className={`${styles.button} ${styles.successButton}`}>Yes</button>
+          <button onClick={() => onCancel(false)} className={`${styles.button} ${styles.cancelButton}`}>No</button>
+        </div>
       </div>
     </div>
   );
