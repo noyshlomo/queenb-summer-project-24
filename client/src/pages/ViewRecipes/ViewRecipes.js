@@ -25,7 +25,7 @@ function ViewRecipes() {
         <h1 >View Recipes</h1>
         <div className="recipes-grid">
             {recipes.map((recipe)=>
-                (<RecipePresentation recipe={recipe}/>)   
+                (<RecipePresentation key={recipe.id} recipe={recipe}/>)   
             )}
         </div>
     </div>

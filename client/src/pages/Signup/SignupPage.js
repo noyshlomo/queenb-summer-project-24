@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import './Signup.css'; // Importing the CSS file for the signup form
+import { useSignup } from "../../hooks/useSignup";
+
 
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userName, setUserName] = useState('');
     const [phone, setPhone] = useState('');
+    const {signup , error, isLoading} = useSignup();
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log(email,password,userName,phone)
+        e.preventDefault()
+        await signup(email,password,userName,phone)
     }
 
     return (
@@ -40,9 +43,10 @@ const Signup = () => {
                 onChange={(e) => setPhone(e.target.value)}
             />
 
-            <button type="submit">Sign Up</button>
+            <button disabled={isLoading}>Sign Up</button>
+            {error && <div className = "error">{error}</div>}
             </form>
     )
 }
 
-export default Signup;
+export default Signup
