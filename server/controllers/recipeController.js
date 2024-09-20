@@ -59,6 +59,26 @@ const deleteRecipeById = (async (req, res) => {
     }
   });
 
+// Update a recipe by ID
+const updateRecipeById = (async (req, res) => {
+    const { id } = req.params;
+    const updatedData = req.body; // The updated data from the client
+  
+    try {
+        const recipe = await Recipe.findByIdAndUpdate(id, updatedData, {
+            new: true, // This option returns the updated document
+            runValidators: true, // Ensures the updated data passes schema validation
+        });
+        
+      if (!recipe) {
+        return res.status(404).json({ error: 'Recipe not found' });
+      }
+      res.status(200).json(recipe);
+    } catch (error) {
+      res.status(500).json({ error: 'Server error' });
+    }
+  });
+
 // create a new recipe 
 const createRecipe = async (req, res) => {
     // destructuring the request body to get the required fields
@@ -94,4 +114,5 @@ module.exports = {
     getAllUserRecipes,
     deleteRecipeById,
     createRecipe,
+    updateRecipeById
 }
