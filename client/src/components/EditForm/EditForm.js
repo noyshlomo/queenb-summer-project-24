@@ -13,7 +13,7 @@ import { useRecipesContext } from '../../hooks/useRecipesContext';
 
 
 // Edit form for existing recipes
-const EditForm = ({ recipeId, setRecipeToEdit }) => {  // Recipe ID should be passed in as a prop
+const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe ID should be passed in as a prop
   const [title, setTitle] = useState('');
   const [prepTime, setPrepTime] = useState(0);
   const [description, setDescription] = useState('');
@@ -102,14 +102,12 @@ const EditForm = ({ recipeId, setRecipeToEdit }) => {  // Recipe ID should be pa
       submissionTime: new Date().toLocaleString() + '',
     };
 
-    console.log("Submitting updated recipe:", recipe);
-
     try {
       const response = await api.put(`/recipe/profile/${recipeId}`, recipe); // Update the recipe
-      console.log("Update response:", response);
       if (response.status === 200) {
         setShowSuccess(true);
         setShowCancel(false);
+        onUpdateRecipe({ ...recipe, _id: recipeId });
 
         // Dispatch the updated recipe and close the form
         dispatch({ type: 'UPDATE_RECIPE', payload: recipe });
