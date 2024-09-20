@@ -111,8 +111,8 @@ const handleUpdateRecipe = (updatedRecipe) => {
                                     />
                                 )}
                                 <h1>{recipe.title}</h1>
-                                <p>{recipe.description}</p>
-                                <p>{recipe.prepTime} mins</p>
+                                <p>Description: {recipe.description}</p>
+                                <p>Preperation Time: {recipe.prepTime} mins</p>
                                 <button onClick={() => handleEditClick(recipe._id)}>Edit</button>
                                 <button onClick={() => handleDeleteClick(recipe._id)}>Delete</button>
                             </div>
