@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useEffect } from "react";
 // Creating a new context to share user authentication state
 export const UserContext = createContext();
 
@@ -15,7 +15,16 @@ export const UserAuthReducer = (state,action) => {
 }
 // Creating a context provider component that wraps other components
 export const UserProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(UserAuthReducer, {user: null});
+    const [state, dispatch] = useReducer(UserAuthReducer, {user: null})
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        if(user){
+            dispatch({type: 'LOGIN', payload: user})
+        }
+    }, [])
+
+
     console.log('state: ', state);
     return (
         <UserContext.Provider value={{...state, dispatch }}>

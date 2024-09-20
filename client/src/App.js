@@ -7,10 +7,12 @@ import Navbar from './components/Navbar/Navbar';
 import RecipePage from './pages/RecipePage/RecipePage';
 import SignupPage from './pages/Signup/SignupPage';
 import LoginPage from './pages/Login/loginPage';
+import { useUserContext } from './hooks/useUserContext'
 
 
 
 function App() {
+  const { user } = useUserContext()
   return (
     <BrowserRouter>
       <div className={styles.app}>
@@ -18,7 +20,7 @@ function App() {
           <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
           <nav className={styles.appNav}>
             <Link to="/" className={styles.appLink}>Home</Link>
-            <Link to="/profile/:userId" className={styles.appLink}>Profile</Link>
+            {user && (<Link to="/profile/:userId" className={styles.appLink}>Profile</Link>)}
           </nav>
           <Navbar className={styles.appNav}></Navbar>
         </header>
