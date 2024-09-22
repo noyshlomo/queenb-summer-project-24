@@ -5,6 +5,7 @@ import styles from './styles/App.module.css';
 import UserProfile from './pages/UserProfile/UserProfile';
 import Navbar from './components/Navbar/Navbar';
 import RecipePage from './pages/RecipePage/RecipePage';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 
 
@@ -24,8 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/profile/:userId" element={<UserProfile />} />
-          </Routes>
-          <Routes>
+            <Route path="/search/:search" element={<SearchPage/>} />
             <Route path="/:id" element={<RecipePage/>} />
           </Routes>
         </main>
