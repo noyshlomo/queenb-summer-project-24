@@ -86,6 +86,17 @@ const createRecipe = async (req, res) => {
         // returning an error message if there was an error creating the recipe
         res.status(400).json({msg: 'error creating recipe', err})
     }
+};
+
+//search
+const getRecipeByTitle = async(req,res) => {
+    try{
+        const response = await Recipe.find({title : {$regex : req.params.search, $options: "i"}});
+        res.status(200).json(response);
+    }
+    catch(err) {
+        res.status(400).json({msg:'error catching data' ,err});
+    }
 }
 
 module.exports = {
@@ -94,4 +105,5 @@ module.exports = {
     getAllUserRecipes,
     deleteRecipeById,
     createRecipe,
+    getRecipeByTitle
 }

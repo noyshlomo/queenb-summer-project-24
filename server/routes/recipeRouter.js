@@ -1,9 +1,11 @@
 const express = require('express');
 const recipeRouter = express.Router();
-const {getAllRecipes,getRecipe,getAllUserRecipes, createRecipe, deleteRecipeById} = require('../controllers/recipeController');
+const {getAllRecipes,getRecipe,getAllUserRecipes, createRecipe, deleteRecipeById, getRecipeByTitle} = require('../controllers/recipeController');
+
 
 recipeRouter.get('/', getAllRecipes);
 recipeRouter.get('/:id', getRecipe);
+recipeRouter.get('/search/:search', getRecipeByTitle);
 
 //GET user recipes
 recipeRouter.get('/profile/:userId',getAllUserRecipes);
