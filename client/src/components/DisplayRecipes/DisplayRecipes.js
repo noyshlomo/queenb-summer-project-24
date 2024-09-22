@@ -1,7 +1,7 @@
 import {React,useContext} from 'react'
 import './styles.css'
 import {RecipesContext} from "../../context/RecipesContext"
-import RecipePresentation from '../../components/RecipePresentation/RecipePresentation'
+import RecipePresentation from '../RecipePresentation/RecipePresentation'
 
 function DisplayRecipes({ recipes:propRecipes }) {
     const {recipes:contextRecipes } = useContext(RecipesContext);

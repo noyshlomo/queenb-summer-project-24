@@ -1,6 +1,6 @@
 import { React,useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import DisplayRecipes from '../ViewRecipes/DisplayRecipes';
+import DisplayRecipes from '../../components/DisplayRecipes/DisplayRecipes';
 
 function SearchPage() {
     const { search } = useParams()

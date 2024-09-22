@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Home.module.css';
-import DisplayRecipes from '../ViewRecipes/DisplayRecipes';
+import DisplayRecipes from '../../components/DisplayRecipes/DisplayRecipes';
 
 
 const Home = () => {
