@@ -1,6 +1,10 @@
 const express = require('express');
-const recipeRouter = express.Router();
 const {getAllRecipes,getRecipe,getAllUserRecipes, createRecipe, deleteRecipeById} = require('../controllers/recipeController');
+const requireAuth = require('../middleware/requireAuth')
+const recipeRouter = express.Router();
+
+//require authentication for all the routes.
+recipeRouter.use(requireAuth)
 
 recipeRouter.get('/', getAllRecipes);
 recipeRouter.get('/:id', getRecipe);
