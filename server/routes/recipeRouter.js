@@ -1,21 +1,17 @@
 const express = require('express');
-const {getAllRecipes,getRecipe,getAllUserRecipes, createRecipe, deleteRecipeById} = require('../controllers/recipeController');
-const requireAuth = require('../middleware/requireAuth')
+const { getAllRecipes, getRecipe, getAllUserRecipes, createRecipe, deleteRecipeById } = require('../controllers/recipeController');
+const requireAuth = require('../middleware/requireAuth');
 const recipeRouter = express.Router();
 
-//require authentication for all the routes.
-recipeRouter.use(requireAuth)
+// Public routes (do not require authentication)
+recipeRouter.get('/', getAllRecipes);  // Home route is public
+recipeRouter.get('/:id', getRecipe);   // Viewing a specific recipe is public
 
-recipeRouter.get('/', getAllRecipes);
-recipeRouter.get('/:id', getRecipe);
+// Protected routes (require authentication)
+recipeRouter.use(requireAuth);  // Apply middleware to routes below
 
-//GET user recipes
-recipeRouter.get('/profile/:userId',getAllUserRecipes);
-
-//DELETE recipe by id
-recipeRouter.delete('/profile/:id',deleteRecipeById);
-
-//POST request to create a new recipe
-recipeRouter.post('/', createRecipe);
+recipeRouter.get('/profile/:userId', getAllUserRecipes);  // Protected: User's recipes
+recipeRouter.delete('/profile/:id', deleteRecipeById);    // Protected: Delete recipe
+recipeRouter.post('/', createRecipe);                     // Protected: Create recipe
 
 module.exports = recipeRouter;

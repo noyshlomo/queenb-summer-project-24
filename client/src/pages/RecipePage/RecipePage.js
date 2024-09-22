@@ -6,23 +6,22 @@ function RecipePage() {
     const [recipe, setRecipe] = useState({});
     const { id } = useParams();
 
-    const getRecipe = async () => {
-        try {
-            const response = await fetch(`http://localhost:5000/api/recipe/${id}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch recipe');
-            }
-            const data = await response.json();
-            setRecipe(data);
-        } catch (err) {
-            console.error(err);
-            return <div>Not Found</div>; // Error handling
-        }
-    };
-
     useEffect(() => {
-        getRecipe();
-    }, [id]); 
+        const getRecipe = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/api/recipe/${id}`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch recipe');
+                }
+                const data = await response.json();
+                setRecipe(data);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        getRecipe();  // Fetch the recipe when the component mounts
+    }, [id]);  // Add 'id' to the dependency array to ensure it re-fetches if the recipe ID changes
 
     return (
         <div className="recipe-container">
