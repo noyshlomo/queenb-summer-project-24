@@ -1,6 +1,6 @@
 import { React,useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import RecipePresentation from '../../components/RecipePresentation/RecipePresentation';
+import DisplayRecipes from '../ViewRecipes/DisplayRecipes';
 
 function SearchPage() {
     const { search } = useParams()
@@ -27,9 +27,7 @@ function SearchPage() {
     <div>
         <h1>Results for { search }</h1>
         <div>
-            {searchResult.length > 0? (searchResult.map((result)=>(
-                <RecipePresentation key={result._id} recipe={result} />
-            ))) : (<p>No results found</p>)}
+            {searchResult.length > 0? (<DisplayRecipes recipes={searchResult}/>) : (<p>No results found</p>)}
         </div>
     </div>
   )

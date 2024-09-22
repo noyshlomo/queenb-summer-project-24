@@ -5,10 +5,10 @@ import SearchBar from '../SearchBar/SearchBar'
 
 function Navbar() {
   return (
-    <nav>
-        <div>
+    <nav className={styles.appNav}>
           <Link to="/"><img src="/project-logo.png" alt="Logo" className={styles.appLogo}/></Link>
-        </div>
+          <Link to="/" className={styles.appLink}>Home</Link>
+          <Link to="/profile/:userId" className={styles.appLink}>Profile</Link>
         <div><SearchBar/></div>
     </nav>
   )

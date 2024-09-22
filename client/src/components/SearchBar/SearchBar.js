@@ -1,36 +1,18 @@
-import { React, useState, useEffect, useRef } from 'react'
+import { React, useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { RecipesContext } from '../../context/RecipesContext'
 import './styles.css'
 
 function SearchBar() {
     const navigate = useNavigate();
     const [ search, setSearch ] = useState("");
-    const [ recipeList, setRecipeList ] = useState([]);
+    const { recipes } = useContext(RecipesContext)
     const [ searchOptionList, setSearchOptionList ] =useState([])
     const [ isOptionsVisible,setIsOptionsVisible] = useState(false);
 
-
-    useEffect(()=>{
-        async function fetchData(){
-            try{
-                const response = await fetch ('http://localhost:5000/api/recipe/');
-                if(!response.ok){
-                    throw new Error('Failed to fetch recipes')
-                }
-                
-                const data = await response.json();
-                setRecipeList(data);
-            }
-            catch(error){
-                console.error(error);
-            }
-        }
-        fetchData();
-    },[])
-
     const handleChange = () =>{
         if(search === '') {return setIsOptionsVisible(false);}
-        setSearchOptionList(recipeList.filter((recipe)=>(recipe.title).includes(search)));
+        setSearchOptionList(recipes.filter((recipe)=>(recipe.title).includes(search)));
         if(searchOptionList.length === 0 )
             {
                 return setIsOptionsVisible(false);
@@ -41,11 +23,12 @@ function SearchBar() {
     useEffect((handleChange),[search]);
 
     const handleSubmit = (e) => {
+        e.preventDefault();
         if(search==='')
-        {alert('The field is empty'); 
+        {
+            alert('The field is empty'); 
             return; 
         }
-        e.preventDefault();
         setSearch('');
         setSearchOptionList([]);
         navigate(`/search/${search}`);
