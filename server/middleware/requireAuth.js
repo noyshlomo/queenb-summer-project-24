@@ -8,7 +8,7 @@ const requireAuth= async (req,res, next) => {
     if (!authorization){
         return res.status(401).json({error: 'You must be logged in to access this resource'})
     }
-    //the authorization is a string containing the user name and the token.
+    //the authorization is a string containing the Bearer <token>.
     const token = authorization.split(' ')[1]
 
     try{
