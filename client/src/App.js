@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
 import UserProfile from './pages/UserProfile/UserProfile';
@@ -26,10 +26,10 @@ function App() {
         </header>
         <main className={styles.main}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={ <Home />} />
             {/* Specific routes should come before dynamic ones */}
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/login" element={!user ? <LoginPage /> : <Navigate to = "/" />} />
+            <Route path="/signup" element={!user ? <SignupPage />: <Navigate to = "/" />} />
             {/* Dynamic route for recipe, placed after specific ones */}
             <Route path="/:id" element={<RecipePage />} />
             <Route path="/profile/:userId" element={<UserProfile />} />
