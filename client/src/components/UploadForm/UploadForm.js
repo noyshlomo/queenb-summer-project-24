@@ -57,6 +57,7 @@ const UploadForm = () => {
     e.preventDefault();
 
     // Trimming each item in ingredients and prepSteps arrays for later checking if the items are empty
+    // Note: trim is a function that removes leading and trailing whitespace from a string
     const trimmedIngredients = ingredients.map(item => item.trim());
     const trimmedPrepSteps = prepSteps.map(item => item.trim());
 
@@ -81,11 +82,10 @@ const UploadForm = () => {
     // Additional validation for the ingredients and prepSteps fields:
     // Checking if the first item in the ingredients or prepSteps array is empty string
     // and also checking if there are any empty strings in the ingredients or prepSteps array
-    // Note: trim is a function that removes leading and trailing whitespace from a string
-    if ((ingredients.some(item => item.trim() === ''))||(ingredients[0] === '' && ingredients.length === 1)){
+    if ((trimmedIngredients.some(item => item === ''))||(trimmedIngredients[0] === '' && trimmedIngredients.length === 1)){
       emptyFieldsForRecipe.push("ingredients");
     }
-    if ((prepSteps.some(item => item.trim() === ''))||(prepSteps[0] === '' && prepSteps.length === 1)){
+    if ((trimmedPrepSteps.some(item => item === ''))||(trimmedPrepSteps[0] === '' && trimmedPrepSteps.length === 1)){
       emptyFieldsForRecipe.push("prepSteps");
     }
 
