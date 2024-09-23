@@ -1,0 +1,16 @@
+.searchPageContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .filtersSection {
+    width: 25%; /* Adjust this percentage based on how wide you want the filters to be */
+    padding-right: 10px; /* Add some space to the right */
+    margin-top: 70px; /* This ensures the filters are 5px from the top */
+  }
+  
+  .recipesSection {
+    width: 75%; /* Adjust this percentage based on the width for the recipes */
+    padding-left: 20px; /* Add some space to the left */
+  }
+  

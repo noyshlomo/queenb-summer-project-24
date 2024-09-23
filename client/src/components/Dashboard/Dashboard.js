@@ -1,9 +1,16 @@
+<<<<<<< HEAD
 import React, { useEffect, useState, useCallback } from 'react';
+=======
+import React, { useEffect, useState, useCallback  } from 'react';
+>>>>>>> 58944bb9e0832850dfac0717643914f0ed4a25c3
 import styles from './Dashboard.module.css';
 import { useParams } from 'react-router-dom';
 import { useRecipesContext } from '../../hooks/useRecipesContext';
 import Modal from '../../components/Modal/Modal';
+<<<<<<< HEAD
 import { useUserContext } from '../../hooks/useUserContext';
+=======
+>>>>>>> 58944bb9e0832850dfac0717643914f0ed4a25c3
 
 const Dashboard = () => {
     const [recipes, setRecipes] = useState([]);
@@ -11,6 +18,7 @@ const Dashboard = () => {
     const [showModal, setShowModal] = useState(false); // To show or hide the modal
     const { userId } = useParams();
     const { dispatch } = useRecipesContext(); 
+<<<<<<< HEAD
     const { user } = useUserContext(); // Get the user context
 
     // Memoize getRecipe function
@@ -25,6 +33,13 @@ const Dashboard = () => {
                 }
             });
 
+=======
+  
+    // Memoize getRecipe function
+    const getRecipe = useCallback(async () => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/recipe/profile/${userId}`);
+>>>>>>> 58944bb9e0832850dfac0717643914f0ed4a25c3
             if (!response.ok) {
                 throw new Error('Failed to fetch recipe');
             }
@@ -33,6 +48,7 @@ const Dashboard = () => {
         } catch (err) {
             console.log(err);
         }
+<<<<<<< HEAD
     }, [user, userId]);
 
     // Use the memoized getRecipe function
@@ -41,6 +57,15 @@ const Dashboard = () => {
             getRecipe();
         }
     }, [user, getRecipe, dispatch]);
+=======
+    }, [userId]);
+
+
+    // Use the memoized getRecipe function
+    useEffect(() => {
+        getRecipe();
+    }, [getRecipe]);
+>>>>>>> 58944bb9e0832850dfac0717643914f0ed4a25c3
 
     // Show the modal and store the recipe to be deleted
     const handleDeleteClick = (recipeId) => {
@@ -54,28 +79,42 @@ const Dashboard = () => {
     const confirmDelete = async () => {
         try {
             const response = await fetch('http://localhost:5000/api/recipe/profile/' + recipeToDelete, {
+<<<<<<< HEAD
                 method: 'DELETE', 
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
+=======
+                method: 'DELETE',
+>>>>>>> 58944bb9e0832850dfac0717643914f0ed4a25c3
             });
-
+    
             if (!response.ok) {
                 throw new Error('Failed to delete the recipe');
             }
-
+    
             const json = await response.json();
+<<<<<<< HEAD
 
             setRecipes((prevRecipes) =>
                 prevRecipes.filter((recipe) => recipe._id !== recipeToDelete)
             );
 
+=======
+            // console.log('Deleted recipe:', json);
+    
+            setRecipes((prevRecipes) =>
+                prevRecipes.filter((recipe) => recipe._id !== recipeToDelete)
+            );
+    
+>>>>>>> 58944bb9e0832850dfac0717643914f0ed4a25c3
             dispatch({ type: 'DELETE_RECIPE', payload: json });
             setShowModal(false);
         } catch (error) {
             console.error('Error deleting recipe:', error);
         }
     };
+    
 
     // Close the modal without deleting the recipe
     const closeModal = () => {

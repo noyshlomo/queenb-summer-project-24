@@ -33,6 +33,9 @@ function App() {
             {/* Dynamic route for recipe, placed after specific ones */}
             <Route path="/:id" element={<RecipePage />} />
             <Route path="/profile/:userId" element={<UserProfile />} />
+            <Route path="/search/:search" element={<SearchPage />} />
+            <Route path="/:id" element={<RecipePage />} />
+            <Route path="/filters" element={<FiltersPage />} />
           </Routes>
         </main>
         <footer className={styles.footer}>
