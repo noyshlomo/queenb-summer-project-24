@@ -20,8 +20,8 @@ const ListInput = ({ label, items, setItems, emptyFields, fieldName, required })
     const updateItem = (index, value) => {
       // Creating a copy of the current items
       const newItems = [...items]; 
-      // Updating the item at the specified index with the new value, removing any leading or trailing whitespace
-      newItems[index] = value.trim();
+      // Updating the item at the specified index with the new value
+      newItems[index] = value;
       // Updating the state with the modified array
       setItems(newItems); 
     };

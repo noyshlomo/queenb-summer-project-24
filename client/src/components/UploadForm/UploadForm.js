@@ -56,13 +56,17 @@ const UploadForm = () => {
   const startProcess = async (e) => {
     e.preventDefault();
 
+    // Trimming each item in ingredients and prepSteps arrays for later checking if the items are empty
+    const trimmedIngredients = ingredients.map(item => item.trim());
+    const trimmedPrepSteps = prepSteps.map(item => item.trim());
+
     // Defining required fields for the recipe
     const requiredFields = {
       title,
       prepTime,
       description,
-      ingredients,
-      prepSteps,
+      ingredients: trimmedIngredients,
+      prepSteps: trimmedPrepSteps,
       tags,
       imgLink
     };
