@@ -29,6 +29,8 @@ function App() {
           </Routes>
           <Routes>
             <Route path="/upload" element={<UploadRecipePage/>} />
+            {/* <Route path="/profile/:userId" element={<UserProfile />} /> */}
+            <Route path="/:id" element={<RecipePage/>} />
           </Routes>
         </main>
         <footer className={styles.footer}>
