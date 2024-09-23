@@ -5,10 +5,10 @@ import FormInput from '../FormInput/FormInput';
 import FormTextArea from "../FormTextArea/FormTextArea";
 import ListInput from "../ListInput/ListInput";
 import MultiSelect from "../MultiSelect/MultiSelect";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import CancelPopup from "../CancelPopup/CancelPopup";
 import SuccessPopup from "../SuccessPopup/SuccessPopup";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
-import ProgressBar from "../ProgressBar/ProgressBar";
 import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
 //import useUserContext from "../../hooks/useUserContext";
 
@@ -37,7 +37,7 @@ const UploadForm = () => {
   // Declaring state variable for progress bar state
   const [progress, setProgress] = useState(0);
 
-  
+  //TODO: CHECK RINA'S CODE:
   // Accessing user via the costume hook
   //const {user} = useUserContext();
   // Assuming userId is stored in user._id - saving the userId for later use in handleSubmit
@@ -152,7 +152,12 @@ const UploadForm = () => {
     
     // Making a POST request to the server to create the new recipe
     try {
-      await api.post('/recipe/', recipe, );
+      await api.post('/recipe/', recipe);
+
+      //TODO: CHECK RINA'S CODE:
+      // const userLocal = JSON.parse(localStorage.getItem('user'));
+      // await api.post('/recipe/', recipe, {headers: { 'Authorization': `Bearer $(userLocal.token)`} })
+
       // Clearing form inputs if successful
       setTitle('');
       setPrepTime(0); 

@@ -1,31 +1,34 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+//import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/HomePage/HomePage';
 import styles from './styles/App.module.css';
 // import UserProfile from './pages/UserProfile/UserProfile';
-// import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import RecipePage from './pages/RecipePage/RecipePage';
 import UploadRecipePage from './pages/UploadRecipePage/UploadRecipePage';
 
 
 
 function App() {
+  // const {user} = useUserContext();
   return (
     <BrowserRouter>
       <div className={styles.app}>
         <header className={styles.appHeader}>
-          <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
+          {/* <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
           <nav className={styles.appNav}>
             <Link to="/" className={styles.appLink}>Home</Link>
             <Link to="/upload" className={styles.appLink}>Upload</Link>
-            {/* <Link to="/profile/:userId" className={styles.appLink}>Profile</Link> */}
-          </nav>
-          {/* <Navbar className={styles.appNav}></Navbar> */}
+            <Link to="/profile/:userId" className={styles.appLink}>Profile</Link> 
+          </nav> */}
+          <Navbar className={styles.appNav}></Navbar>
         </header>
         <main className={styles.main}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/upload" element={<UploadRecipePage/>} />
+            {/* <Route path="/upload" element={user? <UploadRecipePage/> : <Navigate to = "/" />} /> */}
             {/* <Route path="/profile/:userId" element={<UserProfile />} /> */}
             <Route path="/:id" element={<RecipePage/>} />
           </Routes>
