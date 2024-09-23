@@ -1,19 +1,27 @@
-const express = require('express');
+const express = require("express");
 const recipeRouter = express.Router();
-const {getAllRecipes,getRecipe,getAllUserRecipes, createRecipe, deleteRecipeById, getRecipeByTitle} = require('../controllers/recipeController');
+const {
+  getAllRecipes,
+  getRecipe,
+  getTags,
+  getMaxPrepSteps,
+  getFilteredRecipes,
+  getIngredients,
+  getAllUserRecipes,
+  createRecipe,
+  deleteRecipeById,
+  getRecipeByTitle,
+} = require("../controllers/recipeController");
 
-
-recipeRouter.get('/', getAllRecipes);
-recipeRouter.get('/:id', getRecipe);
-recipeRouter.get('/search/:search', getRecipeByTitle);
-
-//GET user recipes
-recipeRouter.get('/profile/:userId',getAllUserRecipes);
-
-//DELETE recipe by id
-recipeRouter.delete('/profile/:id',deleteRecipeById);
-
-//POST request to create a new recipe
-recipeRouter.post('/', createRecipe);
+recipeRouter.get("/getTags", getTags);
+recipeRouter.get("/getIngredients", getIngredients);
+recipeRouter.get("/getMaxPrepSteps", getMaxPrepSteps);
+recipeRouter.post("/getFiltered", getFilteredRecipes);
+recipeRouter.get("/", getAllRecipes);
+recipeRouter.get("/:id", getRecipe);
+recipeRouter.get("/profile/:userId", getAllUserRecipes);
+recipeRouter.delete("/profile/:id", deleteRecipeById);
+recipeRouter.post("/", createRecipe);
+recipeRouter.get("/search/:search", getRecipeByTitle);
 
 module.exports = recipeRouter;
