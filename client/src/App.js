@@ -8,7 +8,8 @@ import RecipePage from './pages/RecipePage/RecipePage';
 import SignupPage from './pages/Signup/SignupPage';
 import LoginPage from './pages/Login/loginPage';
 import { useUserContext } from './hooks/useUserContext'
-
+import FiltersPage  from './pages/Filters/FiltersPage';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 
 function App() {

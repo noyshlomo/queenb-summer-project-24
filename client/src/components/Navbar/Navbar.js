@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-//import styles  from '../../styles/App.module.css'
+import styles  from '../../styles/App.module.css'
 import { useLogout } from '../../hooks/useLogout'
 import { useUserContext } from '../../hooks/useUserContext'
 import SearchBar from '../SearchBar/SearchBar'
+
 
 function Navbar() {
   const { logout } = useLogout()
