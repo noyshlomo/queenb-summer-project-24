@@ -1,15 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './styles/global.css'; 
-import App from './App';
-import { RecipesContextProvider } from './context/RecipesContext';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./styles/global.css";
+import App from "./App";
+import { RecipesContextProvider } from "./context/RecipesContext";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RecipesContextProvider>
-      <App /> 
+      <App />
     </RecipesContextProvider>
   </React.StrictMode>
 );
