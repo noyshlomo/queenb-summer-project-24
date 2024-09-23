@@ -14,7 +14,7 @@ const CancelPopup = ({ title, prepTime, description, ingredients, prepSteps, tag
 
         // Clearing form inputs and error state
         title('');
-        prepTime(1); // do not want to allow non positive prep time
+        prepTime(0); 
         description('');
         ingredients([]);
         prepSteps([]);
