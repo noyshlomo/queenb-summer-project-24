@@ -10,6 +10,7 @@ import FiltersPage from "./pages/Filters/FiltersPage";
 
 
 function App() {
+  // const {user} = useUserContext();
   return (
     <BrowserRouter>
       <div className={styles.app}>
@@ -29,6 +30,7 @@ function App() {
           </Routes>
           <Routes>
             <Route path="/upload" element={<UploadRecipePage/>} />
+            {/* <Route path="/upload" element={user? <UploadRecipePage/> : <Navigate to = "/" />} /> */}
             {/* <Route path="/profile/:userId" element={<UserProfile />} /> */}
             <Route path="/:id" element={<RecipePage/>} />
           </Routes>
