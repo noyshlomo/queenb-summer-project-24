@@ -1,4 +1,5 @@
-const express = require("express");
+const express = require('express');
+const requireAuth = require('../middleware/requireAuth');
 const recipeRouter = express.Router();
 const {
   getAllRecipes,
@@ -19,6 +20,8 @@ recipeRouter.get("/getMaxPrepSteps", getMaxPrepSteps);
 recipeRouter.post("/getFiltered", getFilteredRecipes);
 recipeRouter.get("/", getAllRecipes);
 recipeRouter.get("/:id", getRecipe);
+// Protected routes (require authentication)
+recipeRouter.use(requireAuth); 
 recipeRouter.get("/profile/:userId", getAllUserRecipes);
 recipeRouter.delete("/profile/:id", deleteRecipeById);
 recipeRouter.post("/", createRecipe);

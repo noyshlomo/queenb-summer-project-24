@@ -1,42 +1,50 @@
-const User = require('../models/UserModel')
-const jwt = require('jsonwebtoken')
+const User = require('../models/UserModel');
+const jwt = require('jsonwebtoken');
 
-//create token for authentication
+// Create token for authentication
 const authenticateToken = (_id) => {
-   return jwt.sign({_id: _id}, process.env.SECRET , {expiresIn: '5d'})
+   return jwt.sign({_id: _id}, process.env.SECRET , {expiresIn: '5d'});
+};
 
-}
-
-//login 
+// Login
 const loginProcess = async (req, res) => {
-    const {email,password} = req.body
-    try{
-        const user = await User.login(email, password)
-         //token
-        const token = authenticateToken(user._id)
-        res.status(200).json({email, token})
+    const { email, password } = req.body;
+    try {
+        const user = await User.login(email, password);
+        // Create token
+        const token = authenticateToken(user._id);
+
+        // Respond with only _id, email, and token
+        res.status(200).json({
+            _id: user._id,
+            email: user.email,
+            token: token,
+        });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
-    catch(error){
-        res.status(400).json({error: error.message})
-    }
-}
-//signup
+};
+
+// Signup
 const signupProcess = async (req, res) => {
-    const {email,password,userName,phone} = req.body
-    try{
-        const newUser = await User.signup(email, password, userName, phone)
-         //token
-        const token = authenticateToken(newUser._id)
-        res.status(200).json({email, token})
+    const { email, password, userName, phone } = req.body;
+    try {
+        const newUser = await User.signup(email, password, userName, phone);
+        // Create token
+        const token = authenticateToken(newUser._id);
 
+        // Respond with only _id, email, and token
+        res.status(200).json({
+            _id: newUser._id,
+            email: newUser.email,
+            token: token,
+        });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
-    catch(error){
-        res.status(400).json({error: error.message})
-
-    }
-}
+};
 
 module.exports = {
     loginProcess,
     signupProcess,
-}
+};
