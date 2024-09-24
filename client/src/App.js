@@ -10,6 +10,7 @@ import LoginPage from './pages/Login/loginPage';
 import { useUserContext } from './hooks/useUserContext'
 import FiltersPage  from './pages/Filters/FiltersPage';
 import SearchPage from './pages/SearchPage/SearchPage';
+import UploadRecipePage from './pages/UploadRecipePage/UploadRecipePage';
 
 
 
@@ -19,11 +20,11 @@ function App() {
     <BrowserRouter>
       <div className={styles.app}>
         <header className={styles.appHeader}>
-          <img src="/project-logo.png" alt="Logo" className={styles.appLogo} />
-          <nav className={styles.appNav}>
+          {/* <img src="/project-logo.png" alt="Logo" className={styles.appLogo} /> */}
+          {/* <nav className={styles.appNav}>
             <Link to="/" className={styles.appLink}>Home</Link>
             {user && (<Link to="/profile/:userId" className={styles.appLink}>Profile</Link>)}
-          </nav>
+          </nav> */}
           <Navbar className={styles.appNav}></Navbar>
         </header>
         <main className={styles.main}>

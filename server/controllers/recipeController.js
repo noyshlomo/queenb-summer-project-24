@@ -145,33 +145,6 @@ const createRecipe = async (req, res) => {
     userId,
   } = req.body;
 
-  // checking if the required fields are provided:
-
-  // defining required fields
-  const requiredFields = {
-    title,
-    prepTime,
-    imgLink,
-    submissionTime,
-    description,
-    ingredients,
-    prepSteps,
-    tags,
-    userId,
-  };
-
-  // Collecting any missing fields
-  const emptyFields = Object.keys(requiredFields).filter(
-    (field) => !requiredFields[field]
-  );
-
-  // if any required fields are missing, returning an error message with the missing fields
-  if (emptyFields.length > 0) {
-    return res
-      .status(400)
-      .json({ error: "Please fill in all fields", emptyFields });
-  }
-
   try {
     // adding the new recipe to the database
     const recipe = await Recipe.create({

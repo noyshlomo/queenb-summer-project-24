@@ -15,22 +15,21 @@ function Navbar() {
   }
   return (
     <nav className={styles.appNav}>
-       {/* <Link to="/"><img src="/project-logo.png" alt="Logo" className={styles.appLogo}/></Link> */}
+      <Link to="/"><img src="/project-logo.png" alt="Logo" className={styles.appLogo}/></Link>
+      <Link to="/" className={styles.appLink}>Home</Link>
+      <div><SearchBar/></div>
       {user && (
         <div>
           <span>{user.email}</span>
           <button onClick={handleClick}>Logout</button>
+          <Link to="/profile/:userId" className={styles.appLink}>Profile</Link>
+          <Link to="/upload" >Upload</Link>
         </div>
       )}
       {!user && (
         <div>
           <Link to="/login"> Login</Link>
           <Link to="/signup"> Signup</Link>
-          <Link to="/"><img src="/project-logo.png" alt="Logo" className={styles.appLogo}/></Link>
-          <Link to="/" className={styles.appLink}>Home</Link>
-          <Link to="/upload" >Upload</Link>
-          <Link to="/profile/:userId" className={styles.appLink}>Profile</Link>
-        <div><SearchBar/></div>
         </div>
       )}
     </nav>
