@@ -181,7 +181,7 @@ const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe
           emptyFields={emptyFields} 
           fieldName="imgLink" 
         />
-        <div className="button-container">
+        {/* <div className="button-container">
           <button type="button" onClick={() => setShowCancel(true)}>Cancel</button>
           <button type="submit">Save Changes</button> 
         </div>
@@ -195,7 +195,53 @@ const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe
             onConfirm={handleConfirmSubmit} 
             onCancel={setShowConfirm} 
           />
-        )}
+        )} */}
+         <div className="button-container">
+          {/* button for raising a cancel popup, by setting showCancel to true */}
+          <button type="button" onClick={() => setShowCancel(true)}>cancel</button>
+          <button type="submit" onClick={startProcess}>submit</button> 
+          </div>
+     
+         
+
+          {/* if cancel button was pressed (showCancel is true), showing the cancel popup */}
+          {showCancel && 
+            <CancelPopup
+              title = {setTitle}
+              prepTime= {setPrepTime}
+              description= {setDescription}
+              ingredients= {setIngredients}
+              prepSteps= {setPrepSteps}
+              tags= {setTags}
+              imgLink= {setImgLink}
+              error= {setError}
+              emptyFields= {setEmptyFields}
+              showCancel = {setShowCancel}
+            />
+          }
+          
+          {/* if error is true (an error occurred in the server), showing the error popup */}
+          {error && 
+            <ErrorPopup 
+            error={setError} 
+            />
+          }
+
+          {/* if post request succeeded in handleSubmit, showing the success popup */}
+          {showSuccess && 
+            <SuccessPopup
+            showSuccess = {setShowSuccess} 
+            />
+          }
+
+          {/* if submit button was pressed, and the required fields are filled, showing the confirmation popup */}
+          {showConfirm &&
+            <ConfirmationPopup 
+            confirm={showConfirm} 
+            onConfirm={handleConfirmSubmit} 
+            onCancel={setShowConfirm} 
+            />
+          }
       </form>
     </div>
   );
