@@ -10,7 +10,7 @@ import SuccessPopup from "../SuccessPopup/SuccessPopup";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
 import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
 import { useRecipesContext } from '../../hooks/useRecipesContext'; 
-
+import { useUserContext } from '../../hooks/useUserContext';
 
 // Edit form for existing recipes
 const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe ID should be passed in as a prop
@@ -27,6 +27,10 @@ const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe
   const [showCancel, setShowCancel] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+
+  const { user } = useUserContext(); // Get the user context
+    // Assuming userId is stored in user._id - saving the userId for later use in handleSubmit
+  const userId = user?._id;
 
   const { dispatch } = useRecipesContext();
 
@@ -90,38 +94,94 @@ const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe
     handleSubmit();
   };
 
-  const handleSubmit = async () => {
-    const recipe = {
-      title,
-      prepTime,
-      imgLink,
-      description,
-      ingredients,
-      prepSteps,
-      tags,
-      submissionTime: new Date().toLocaleString() + '',
-    };
+//   const handleSubmit = async () => {
+//     const recipe = {
+//       title,
+//       prepTime,
+//       imgLink,
+//       description,
+//       ingredients,
+//       prepSteps,
+//       tags,
+//       submissionTime: new Date().toLocaleString() + '',
+//       userId,
+//     };
 
-    try {
-      const response = await api.put(`/recipe/profile/${recipeId}`, recipe); // Update the recipe
-      if (response.status === 200) {
-        setShowSuccess(true);
-        setShowCancel(false);
-        onUpdateRecipe({ ...recipe, _id: recipeId });
+//     try {
+//       const response = await api.put(`/recipe/profile/${recipeId}`, recipe); // Update the recipe
 
-        // Dispatch the updated recipe and close the form
-        dispatch({ type: 'UPDATE_RECIPE', payload: recipe });
-        setRecipeToEdit(null);  // Close the EditForm after success
-    } else {
-        console.error("Failed to update the recipe:", response.status);
+//       const userLocal = JSON.parse(localStorage.getItem('user'));
+//       await api.update('/recipe/', recipe, {headers: { 'Authorization': `Bearer $(userLocal.token)`} })
+
+
+//       if (response.status === 200) {
+//         setShowSuccess(true);
+//         setShowCancel(false);
+//         onUpdateRecipe({ ...recipe, _id: recipeId });
+
+//         // Dispatch the updated recipe and close the form
+//         dispatch({ type: 'UPDATE_RECIPE', payload: recipe });
+//         setRecipeToEdit(null);  // Close the EditForm after success
+//     } else {
+//         console.error("Failed to update the recipe:", response.status);
+//     }
+
+// } catch (err) {
+//     console.error("Error updating recipe:", err);
+//     setError(err);
+//     setEmptyFields(emptyFields || []);
+// }
+//   };
+const handleSubmit = async () => {
+  const recipe = {
+    title,
+    prepTime,
+    imgLink,
+    description,
+    ingredients,
+    prepSteps,
+    tags,
+    submissionTime: new Date().toLocaleString(),
+    userId,
+  };
+
+  try {
+    // Retrieve user info from local storage (including the token)
+    const userLocal = JSON.parse(localStorage.getItem('user'));
+
+    // Ensure the token exists
+    if (!userLocal || !userLocal.token) {
+      setError("User not authenticated. Please log in.");
+      return;
     }
 
-} catch (err) {
+    // Make the API request with the token in the headers
+    const response = await api.put(`/recipe/profile/${recipeId}`, recipe, {
+      headers: {
+        'Authorization': `Bearer ${userLocal.token}`, // Correct token interpolation
+      },
+    });
+
+    if (response.status === 200) {
+      // Handle success case
+      setShowSuccess(true);
+      setShowCancel(false);
+      onUpdateRecipe({ ...recipe, _id: recipeId });
+
+      // Dispatch the updated recipe to the context
+      dispatch({ type: 'UPDATE_RECIPE', payload: recipe });
+      setRecipeToEdit(null);  // Close the form on success
+    } else {
+      console.error("Failed to update the recipe:", response.status);
+      setError("Failed to update the recipe. Please try again.");
+    }
+
+  } catch (err) {
     console.error("Error updating recipe:", err);
-    setError(err);
+    setError("An error occurred while updating the recipe. Please try again.");
     setEmptyFields(emptyFields || []);
-}
-  };
+  }
+};
 
   return (
     <div>
@@ -181,7 +241,7 @@ const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe
           emptyFields={emptyFields} 
           fieldName="imgLink" 
         />
-        {/* <div className="button-container">
+        <div className="button-container">
           <button type="button" onClick={() => setShowCancel(true)}>Cancel</button>
           <button type="submit">Save Changes</button> 
         </div>
@@ -195,13 +255,13 @@ const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe
             onConfirm={handleConfirmSubmit} 
             onCancel={setShowConfirm} 
           />
-        )} */}
-         <div className="button-container">
-          {/* button for raising a cancel popup, by setting showCancel to true */}
-          <button type="button" onClick={() => setShowCancel(true)}>cancel</button>
-          <button type="submit" onClick={startProcess}>submit</button> 
+        )}
+       {/* //  <div className="button-container">
+        //  button for raising a cancel popup, by setting showCancel to true */}
+          {/* <button type="button" onClick={() => setShowCancel(true)}>cancel</button>
+          <button type="submit">submit</button> 
           </div>
-     
+      */}
          
 
           {/* if cancel button was pressed (showCancel is true), showing the cancel popup */}

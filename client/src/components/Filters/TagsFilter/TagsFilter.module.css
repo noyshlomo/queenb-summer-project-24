@@ -1,0 +1,15 @@
+.container {
+width: 280px;
+}
+
+.textField {
+width: 100%; /* Ensures the TextField takes full width */
+}
+
+.textFieldFocused .MuiOutlinedInput-root .Mui-focused fieldset {
+border-color: black; /* Keep black on focus (click) */
+}
+
+.textFieldFocused .MuiInputLabel-root.Mui-focused {
+color: black; /* Label color on focus */
+}

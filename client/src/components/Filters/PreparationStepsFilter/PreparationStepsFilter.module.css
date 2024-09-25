@@ -1,0 +1,18 @@
+.container {
+width: 280px;
+}
+
+.typography {
+color: black;
+margin-bottom: 8px; /* equivalent to 1 MUI spacing unit */
+text-align: left;
+}
+
+.slider {
+color: black;
+}
+
+.sliderThumb {
+border-radius: 50%;
+border: 2px solid black;
+}
