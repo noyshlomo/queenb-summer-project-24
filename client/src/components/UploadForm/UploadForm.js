@@ -235,8 +235,8 @@ const UploadForm = () => {
           />
           <div className="button-container">
           {/* button for raising a cancel popup, by setting showCancel to true */}
-          <button type="button" onClick={() => setShowCancel(true)}>cancel</button>
-          <button type="submit" onClick={startProcess} disabled={isSubmitting}>
+          <button type="button" onClick={() => setShowCancel(true)} className = {styles.bCancelUpload}>cancel</button>
+          <button type="submit" onClick={startProcess} disabled={isSubmitting} className = {styles.bSubmitUpload}>
             {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
           </div>
