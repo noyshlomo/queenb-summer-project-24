@@ -1,40 +1,24 @@
+import React from 'react';
+import {Link} from 'react-router-dom';
+import styles from './ErrorPopup.module.css'; 
 
-const ErrorPopup = ({error}) => (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-      <div style={{
-        backgroundColor: 'white',
-        padding: '20px',
-        borderRadius: '5px',
-        maxWidth: '400px',
-        textAlign: 'center',
-      }}>
-        <h2 style={{ marginBottom: '10px', color: 'red'}}>Error</h2>
-        <p>An Error Has Occurred - please try again later </p>
-        <a 
-          href={`/`}
-          onClick={error(false)} 
-          style={{
-            display: 'inline-block',
-            margin: '10px 0',
-            padding: '10px',
-            backgroundColor: '#4CAF50',
-            color: 'white',
-            textDecoration: 'none',
-            borderRadius: '3px',
-          }}
+
+// Component for a error popup from the server
+// this component is used for showing the error of the server
+// props:
+// errorMessage - the error message from the server
+// onDismiss - the set function that sets the error to null and the isSubmitting to false to allow resubmission
+const ErrorPopup = ({ errorMessage, onDismiss }) => (
+    <div className={styles.popupOverlay}>
+      <div className={styles.popupContent}>
+        <h2 className={styles.popupTitle}>Error</h2>
+        <p>{errorMessage}</p>
+        <Link to = "/"
+          onClick={onDismiss} 
+          className={styles.backToHomeButton}
         >
           Back to Home Page
-        </a>
+        </Link>
       </div>
     </div>
   );

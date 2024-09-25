@@ -14,7 +14,7 @@ const CancelPopup = ({ title, prepTime, description, ingredients, prepSteps, tag
 
         // Clearing form inputs and error state
         title('');
-        prepTime(1); // do not want to allow non positive prep time
+        prepTime(0); 
         description('');
         ingredients([]);
         prepSteps([]);
@@ -23,9 +23,6 @@ const CancelPopup = ({ title, prepTime, description, ingredients, prepSteps, tag
         error(null);
         emptyFields([]);
         showCancel(false);
-
-        // Redirecting the user to the home page after canceling the form submission
-        window.location.href = 'http://localhost:3000/';
         
     };
     
@@ -33,13 +30,14 @@ const CancelPopup = ({ title, prepTime, description, ingredients, prepSteps, tag
     return (
       <div className={styles.overlay}>
       <div className={styles.popupBox}>
-          <h2 style={{ marginBottom: '10px' }}>Are you sure you want to cancel?</h2>
-          <button onClick={handleCancel} className={`${styles.button} ${styles.successButton}`}>Yes</button>
-          <button onClick={() => showCancel(false)} className={`${styles.button} ${styles.cancelButton}`}>No</button>
+          <h2 style={{ marginBottom: '10px' }}>Are you sure you want to cancel? </h2>
+          <div className = {styles.buttonsContainer}>
+            <button onClick={handleCancel} className={`${styles.button} ${styles.successButton}`}>Yes</button>
+            <button onClick={() => showCancel(false)} className={`${styles.button} ${styles.cancelButton}`}>No</button>
+          </div>
       </div>
     </div>
     );
   }
-
-
+  
 export default CancelPopup;

@@ -1,0 +1,75 @@
+.appLogo {
+    height: 125px;
+    padding-top: 10px;
+  }
+  
+  .appNav {
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+  
+  .appLink {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  
+  .appLink:hover {
+    text-decoration: underline;
+  }
+
+  .logoContainer {
+    position: absolute;
+    left: 20px; /* Position the logo on the far left */
+  }
+
+  .userContainer {
+    position: absolute;
+    right: 0px; 
+    top:5px;
+  }
+
+  .searchBar {
+    justify-content: center; /* Pushes the search bar to the far right */
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+
+  nav button{
+    background-color: #b3613c; 
+    color: white; 
+    padding: 3px 7px; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 14px; 
+    text-align: center; 
+    cursor: pointer; 
+    text-decoration: none; 
+    display: inline-block; 
+    margin-left: 5px;
+  }
+
+  @media (max-width: 480px) {
+    .appLogo {
+      height: 70px; /* Adjust logo height for mobile */
+    }
+    nav button{
+      padding: 2px 5px;
+      font-size: 10px;
+    }
+    .appLink {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .userContainer {
+      font-size: 10px;
+    }
+  }
