@@ -8,30 +8,8 @@
   background-color: #f4ede7;
   padding: 5px 30px 5px 30px;
   color: #b3613c;
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between; */
 }
 
-/* .appLogo {
-  height: 100px;
-}
-
-.appNav {
-  display: flex;
-  gap: 20px;
-  text-decoration: none;
-}
-
-.appLink {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2em;
-}
-
-.appLink:hover {
-  text-decoration: underline;
-} */
 
 .main {
   padding: 20px;
@@ -39,33 +17,22 @@
   height: 100vh;
 }
 
-.footer {
-  padding: 10px;
-  background-color: #f4ede7;
-  color: #b3613c;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  text-align: center;
-}
-
-/* @media screen and (max-width: 400px) {
+@media screen and (max-width: 400px) {
   .main{ display:inline-flex;}
   .appLogo{height: 100px;}
-} */
+}
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .main {
     flex-direction: column;
     width: 90%;
   }
-} */
+}
 
 /* For mobile phones */
 @media (max-width: 480px) {
   .main {
-    padding: 10px;
+    padding: 5px;
     width: 100%;
   }
 }
-
