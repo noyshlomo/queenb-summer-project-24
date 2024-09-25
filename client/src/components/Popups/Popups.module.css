@@ -1,0 +1,70 @@
+
+/* Popups.module.css */
+
+/* Shared styles for the overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Shared styles for the popup box */
+  .popupBox {
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .buttonsContainer {
+    display: flex; /* Set to flex to apply gap between items */
+    justify-content: center; /* Ensure buttons are centered */
+    gap: 10px; /* Adjust gap between buttons */
+    margin-top: 20px; /* Optional, adds spacing between buttons and content above */
+  }
+
+  /* Shared styles for buttons */
+  .button {
+    display: inline-block;
+    padding: 15px 25px; /* Increase padding for a "bolder" look */
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    font-weight: bold; 
+    font-size: 16px; 
+  }
+  
+  /* Specific styles for success and cancel buttons */
+  .successButton {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cancelButton {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .closeButton {
+    display: block;
+    width: 50%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+

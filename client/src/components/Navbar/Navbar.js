@@ -23,6 +23,7 @@ function Navbar() {
         {user && (
           <>
             <Link to="/profile/:userId" className="appLink">Profile</Link>
+            <Link to="/upload" className="appLink">Upload</Link>
             <div className='userContainer'>
               <span>{user.email}</span>
               <button onClick={handleClick}>Logout</button>
@@ -41,4 +42,4 @@ function Navbar() {
   )
 }
 
-export default Navbar 
+export default Navbar

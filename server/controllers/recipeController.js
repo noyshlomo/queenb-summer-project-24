@@ -145,33 +145,6 @@ const createRecipe = async (req, res) => {
     userId,
   } = req.body;
 
-  // checking if the required fields are provided:
-
-  // defining required fields
-  const requiredFields = {
-    title,
-    prepTime,
-    imgLink,
-    submissionTime,
-    description,
-    ingredients,
-    prepSteps,
-    tags,
-    userId,
-  };
-
-  // Collecting any missing fields
-  const emptyFields = Object.keys(requiredFields).filter(
-    (field) => !requiredFields[field]
-  );
-
-  // if any required fields are missing, returning an error message with the missing fields
-  if (emptyFields.length > 0) {
-    return res
-      .status(400)
-      .json({ error: "Please fill in all fields", emptyFields });
-  }
-
   try {
     // adding the new recipe to the database
     const recipe = await Recipe.create({
@@ -192,80 +165,6 @@ const createRecipe = async (req, res) => {
     res.status(400).json({ msg: "error creating recipe", err });
   }
 };
-
-// // get filtered recipes
-// const getFilteredRecipes = async (req, res) => {
-//   try {
-//     const { tags, maxPrepSteps, ingredients, sortingMethod } = req.body; // Extract tags, maxPrepSteps, ingredients, and sortingMethod from request body
-//     const tagsArray = Array.isArray(tags) ? tags : []; // Ensure tags is an array
-//     const ingredientsArray = Array.isArray(ingredients) ? ingredients : []; // Ensure ingredients is an array
-
-//     // Function to escape regex special characters
-//     const escapeRegExp = (string) => {
-//       return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // Escape special characters
-//     };
-
-//     let filter = {};
-
-//     // Validate maxPrepSteps
-//     if (maxPrepSteps !== undefined && isNaN(maxPrepSteps)) {
-//       return res
-//         .status(400)
-//         .json({ msg: "maxPrepSteps must be a valid number" });
-//     }
-
-//     // Build filter for tags
-//     if (tagsArray.length > 0) {
-//       const regexPatterns = tagsArray.map((tag) => ({
-//         tags: { $regex: new RegExp(`^${escapeRegExp(tag)}$`, "i") }, // Case-insensitive match
-//       }));
-
-//       filter.$or = regexPatterns; // Match any of the regex patterns
-//     }
-
-//     // Build filter for maxPrepSteps
-//     if (maxPrepSteps !== undefined) {
-//       filter.$expr = { $lte: [{ $size: "$prepSteps" }, maxPrepSteps] };
-//     }
-
-//     // Build filter for ingredients
-//     if (ingredientsArray.length > 0) {
-//       const regexPatterns = ingredientsArray.map((ingredient) => ({
-//         ingredients: {
-//           $regex: new RegExp(`^${escapeRegExp(ingredient)}$`, "i"),
-//         }, // Case-insensitive match
-//       }));
-
-//       filter.$or = regexPatterns; // Match any of the regex patterns
-//     }
-
-//     // Define sorting based on sortingMethod
-//     let sort = {};
-//     switch (sortingMethod) {
-//       case 1:
-//         sort = { submissionTime: -1 }; // Sort by submissionTime (new to old)
-//         break;
-//       case 2:
-//         sort = { prepTime: 1 }; // Sort by prepTime (shortest to longest)
-//         break;
-//       default:
-//         sort = {}; // No sorting
-//     }
-
-//     // Fetch recipes with filter and sorting
-//     const recipes = await Recipe.find(filter).sort(sort);
-
-//     res.status(200).json(recipes);
-//   } catch (err) {
-//     console.error("Error fetching recipes:", err); // Log the full error
-
-//     // Send a detailed error response
-//     res.status(500).json({
-//       msg: "Error fetching recipes",
-//       error: err.message || "Unknown error", // Ensure a message is sent even if err is empty
-//     });
-//   }
-// };
 
 // //search
 const getRecipeByTitle = async (req, res) => {

@@ -43,16 +43,16 @@
   }
 
   nav button{
-    background-color: #b3613c; /* Dark coral background */
-    color: white; /* White text */
-    padding: 3px 7px; /* Padding for size */
-    border: none; /* No border */
-    border-radius: 5px; /* Slightly rounded corners */
-    font-size: 14px; /* Button text size */
-    text-align: center; /* Center the text inside the button */
-    cursor: pointer; /* Pointer cursor */
-    text-decoration: none; /* Remove underline from links */
-    display: inline-block; /* Make sure links behave like buttons */
+    background-color: #b3613c; 
+    color: white; 
+    padding: 3px 7px; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 14px; 
+    text-align: center; 
+    cursor: pointer; 
+    text-decoration: none; 
+    display: inline-block; 
     margin-left: 5px;
   }
 
