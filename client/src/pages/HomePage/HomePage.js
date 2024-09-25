@@ -4,7 +4,8 @@ import DisplayRecipes from "../../components/DisplayRecipes/DisplayRecipes";
 
 
 const Home = () => {
-  return <div className={styles.home}><DisplayRecipes /></div>
+  return <div className={styles.home}><DisplayRecipes /> </div>
+
 };
 
 export default Home;
