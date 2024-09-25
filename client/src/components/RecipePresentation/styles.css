@@ -1,10 +1,13 @@
 .recipe-card {
-    background-color: #ffffff;
+    background-color: #fcf8f8;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
     transition: transform 0.3s;
+    width: 100%; /* Ensure the card takes up the full grid space */
+    box-sizing: border-box;
+    text-decoration: none; /* Removes underline from the link */
 }
 
 .recipe-card:hover {
@@ -21,9 +24,27 @@
     font-size: 1.5em;
     margin: 15px 0;
     color: #333;
+    font-weight: 600; /* A bit bolder than 500 */
 }
 
-.recipe-card h1 + h1 {
+.recipe-card h1 + h2 {
     font-size: 1em;
     color: #666;
+    font-weight: 300; /* Thinner font for description */
+}
+
+.recipe-card a {
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit; /* Keep the color consistent */
+}
+
+/* Styles for tablets (2 cards per row) */
+@media (max-width: 768px) {
+    .recipe-card h1 {
+        font-size: 1.3em;
+    }
+
+    .recipe-card h1 + h2 {
+        font-size: 0.9em;
+    }
 }

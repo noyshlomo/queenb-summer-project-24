@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styles  from '../../styles/App.module.css'
 import { useLogout } from '../../hooks/useLogout'
 import { useUserContext } from '../../hooks/useUserContext'
 import SearchBar from '../SearchBar/SearchBar'
+import "./styles.css"
 
 
 function Navbar() {
@@ -14,25 +14,30 @@ function Navbar() {
     logout()
   }
   return (
-    <nav className={styles.appNav}>
-       {/* <Link to="/"><img src="/project-logo.png" alt="Logo" className={styles.appLogo}/></Link> */}
-      {user && (
-        <div>
-          <span>{user.email}</span>
-          <button onClick={handleClick}>Logout</button>
+    <>
+        <div className='logoContainer'>
+          <Link to="/"><img src="/pie-logo.png" alt="Logo" className="appLogo"/></Link>
         </div>
-      )}
-      {!user && (
-        <div>
-          <Link to="/login"> Login</Link>
-          <Link to="/signup"> Signup</Link>
-          <Link to="/"><img src="/project-logo.png" alt="Logo" className={styles.appLogo}/></Link>
-          <Link to="/" className={styles.appLink}>Home</Link>
-          <Link to="/profile/:userId" className={styles.appLink}>Profile</Link>
-        <div><SearchBar/></div>
-        </div>
-      )}
-    </nav>
+      <nav className='appNav'>
+      <Link to="/" className='appLink'>Home</Link>
+        {user && (
+          <>
+            <Link to="/profile/:userId" className="appLink">Profile</Link>
+            <div className='userContainer'>
+              <span>{user.email}</span>
+              <button onClick={handleClick}>Logout</button>
+            </div>
+          </>
+        )}
+        {!user && (
+          <>
+            <Link to="/login" className="appLink"> Login</Link>
+            <Link to="/signup" className="appLink"> Signup</Link>
+          </>
+        )}       
+      </nav>
+      <div className="searchBar"><SearchBar /></div>
+      </>
   )
 }
 
