@@ -1,8 +1,8 @@
 import React from 'react';
-import styles from './UploadRecipe.module.css';
+import styles from './UploadRecipePage.module.css';
 import UploadForm from '../../components/UploadForm/UploadForm';
 
-const UploadRecipe = () => {
+const UploadRecipePage = () => {
     return (
        <div className={styles.uploadRecipe}>
          <h1 className={styles.headline}>Add A new Recipe</h1>
@@ -11,4 +11,4 @@ const UploadRecipe = () => {
 );
   };
   
-  export default UploadRecipe;
+  export default UploadRecipePage;

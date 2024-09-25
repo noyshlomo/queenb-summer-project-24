@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import api from "../../services/api";
 import styles from './UploadForm.module.css';
 import FormInput from '../FormInput/FormInput';
@@ -45,13 +45,6 @@ const UploadForm = () => {
   // Assuming userId is stored in user._id - saving the userId for later use in handleSubmit
   const userId = user?._id;
   
-  // Setting up effect for handling submit after progress bar completion
-  useEffect(() => {
-    if (progress === 100) {
-      setShowSuccess(true);
-    }
-  }, [progress]);
-
 
   // Function for the first step after the user clicks the submit button:
   // Starting the process when the form is submitted, first validating fields and confirming the submission
@@ -171,13 +164,14 @@ const UploadForm = () => {
       setShowCancel(false);
       setProgress(0);
       setIsSubmitting(false);
+      setError(null);
    } catch (err) {
       // Handling server errors
       setError(err);
       setEmptyFields(emptyFields || []);
       setIsSubmitting(false);
       return;
-   }
+   } 
   }
 
   // Returning the upload form component
@@ -270,11 +264,6 @@ const UploadForm = () => {
           }
           
           {/* if error is true (an error occurred in the server), showing the error popup */}
-          {/* {error && 
-            <ErrorPopup 
-            error={setError} 
-            />
-          } */}
           {error && 
           <ErrorPopup 
             errorMessage={error.message || "An error has occurred"} 
@@ -286,7 +275,7 @@ const UploadForm = () => {
 }
 
           {/* if post request succeeded in handleSubmit, showing the success popup */}
-          {showSuccess && 
+          {showSuccess && error === null &&
             <SuccessPopup
             showSuccess = {setShowSuccess} 
             />

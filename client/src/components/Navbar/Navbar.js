@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles  from '../../styles/App.module.css';
-import { useLogout } from '../../hooks/useLogout';
-import { useUserContext } from '../../hooks/useUserContext';
-import SearchBar from '../SearchBar/SearchBar';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { useLogout } from '../../hooks/useLogout'
+import { useUserContext } from '../../hooks/useUserContext'
+import SearchBar from '../SearchBar/SearchBar'
+import "./styles.css"
 
 
 function Navbar() {
@@ -14,26 +14,32 @@ function Navbar() {
     logout()
   }
   return (
-    <nav className={styles.appNav}>
-      <Link to="/"><img src="/project-logo.png" alt="Logo" className={styles.appLogo}/></Link>
-      <Link to="/" className={styles.appLink}>Home</Link>
-      <div><SearchBar/></div>
-      {user && (
-        <div>
-          <span>{user.email}</span>
-          <button onClick={handleClick}>Logout</button>
-          <Link to="/profile/:userId" className={styles.appLink}>Profile</Link>
-          <Link to="/upload" >Upload</Link>
+    <>
+        <div className='logoContainer'>
+          <Link to="/"><img src="/project-logo.png" alt="Logo" className="appLogo"/></Link>
         </div>
-      )}
-      {!user && (
-        <div>
-          <Link to="/login"> Login</Link>
-          <Link to="/signup"> Signup</Link>
-        </div>
-      )}
-    </nav>
+      <nav className='appNav'>
+      <Link to="/" className='appLink'>Home</Link>
+        {user && (
+          <>
+            <Link to="/profile/:userId" className="appLink">Profile</Link>
+            <Link to="/upload" className="appLink">Upload</Link>
+            <div className='userContainer'>
+              <span>{user.email}</span>
+              <button onClick={handleClick}>Logout</button>
+            </div>
+          </>
+        )}
+        {!user && (
+          <>
+            <Link to="/login" className="appLink"> Login</Link>
+            <Link to="/signup" className="appLink"> Signup</Link>
+          </>
+        )}       
+      </nav>
+      <div className="searchBar"><SearchBar /></div>
+      </>
   )
 }
 
-export default Navbar;
+export default Navbar
