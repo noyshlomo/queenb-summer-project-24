@@ -138,7 +138,7 @@ const UploadForm = () => {
       title,
       prepTime,
       imgLink,
-      submissionTime: new Date().toLocaleString() + '',
+      submissionTime: new Date().toISOString(),
       description,
       ingredients,
       prepSteps,
