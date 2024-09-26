@@ -297,7 +297,7 @@ const Dashboard = () => {
                         <div className={styles.recipeList}>
                             {recipes.length > 0 ? (
                                 recipes.map((recipe) => (
-                                    <div key={recipe._id} className={styles.recipeCard} onClick={() => handleRecipeClick(recipe._id)}> 
+                                    <div key={recipe._id} className={styles.recipeCard} onClick={() => handleRecipeClick(recipe._id)}>
     {recipe.imgLink && (
         <img
             src={recipe.imgLink}
@@ -305,17 +305,19 @@ const Dashboard = () => {
             className={styles.recipeImage}
         />
     )}
-    <h1 className={styles.recipeTitle}>{recipe.title}</h1>  
-    <p className={styles.recipeDescription}>Description: {recipe.description}</p>
+    <div className={styles.recipeInfo}>
+        <h1 className={styles.recipeTitle}>{recipe.title}</h1>
+        <p className={styles.recipeDescription}>{recipe.description}</p>
+    </div>
     <p className={styles.recipePrepTime}>Preparation Time: {recipe.prepTime} mins</p>
-
-
-    <div className="buttons">
-    <button onClick={(e) => { e.stopPropagation(); handleEditClick(recipe._id); }}>Edit</button>
-    <button onClick={(e) => { e.stopPropagation(); handleDeleteClick(recipe._id); }}>Delete</button>
-    </div> 
-    
+    <div className={styles.actions}>
+        <button onClick={(e) => { e.stopPropagation(); handleEditClick(recipe._id); }} className={styles.editButton}>Edit</button>
+        <button onClick={(e) => { e.stopPropagation(); handleDeleteClick(recipe._id); }} className={styles.deleteButton}>Delete</button>
+    </div>
 </div>
+
+                                
+                                
 
                                     // <div
                                     //     key={recipe._id}
