@@ -38,13 +38,13 @@ function SearchBar() {
         <form onSubmit={handleSubmit}>
             <div className="search-input">
             <input type="text" 
-            onChange={(e) => 
+                onChange={(e) => 
                 {setSearch(e.target.value);}}
-            value={search}
+                value={search}
             />
             <button type="submit" className='icon'><img src='/search-Icon.png' alt ='search'/></button>
             {isOptionsVisible && 
-            <div className="search-option">
+            <div className="search-options">
             {searchOptionList && searchOptionList.slice(0, 5).map((searchOption)=>
             (<button  className="search-option" onClick={()=>{setSearch(searchOption.title);}}key={searchOption._id}>{searchOption.title}</button>)
             )}

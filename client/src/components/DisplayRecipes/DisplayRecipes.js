@@ -3,7 +3,7 @@ import "./styles.css";
 import { RecipesContext } from "../../context/RecipesContext";
 import RecipePresentation from "../RecipePresentation/RecipePresentation";
 
-function DisplayRecipes({}) {
+function DisplayRecipes() {
   const { recipes } = useContext(RecipesContext);
 
   return (
