@@ -242,9 +242,14 @@ const handleSubmit = async () => {
           fieldName="imgLink" 
         />
         <div className="button-container">
-          <button type="button" onClick={() => setShowCancel(true)}>Cancel</button>
-          <button type="submit">Save Changes</button> 
-        </div>
+          <button type="button" className={styles.bCancelEdit} onClick={() => setShowCancel(true)}>
+            Cancel
+          </button>
+          <button type="submit" className={styles.bSubmitEdit}>
+            Save Changes
+          </button> 
+      </div>
+
 
         {showCancel && <CancelPopup setShowCancel={setShowCancel} />}
         {error && <ErrorPopup error={setError} />}
@@ -256,15 +261,7 @@ const handleSubmit = async () => {
             onCancel={setShowConfirm} 
           />
         )}
-       {/* //  <div className="button-container">
-        //  button for raising a cancel popup, by setting showCancel to true */}
-          {/* <button type="button" onClick={() => setShowCancel(true)}>cancel</button>
-          <button type="submit">submit</button> 
-          </div>
-      */}
-         
-
-          {/* if cancel button was pressed (showCancel is true), showing the cancel popup */}
+      
           {showCancel && 
             <CancelPopup
               title = {setTitle}
