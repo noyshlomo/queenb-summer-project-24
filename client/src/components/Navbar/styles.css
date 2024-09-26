@@ -1,6 +1,5 @@
 .appLogo {
-    height: 125px;
-    padding-top: 10px;
+    height: 115px;
   }
   
   .appNav {
@@ -26,7 +25,7 @@
 
   .logoContainer {
     position: absolute;
-    left: 20px; /* Position the logo on the far left */
+    left: 25px; /* Position the logo on the far left */
   }
 
   .userContainer {
@@ -42,7 +41,7 @@
     padding-bottom: 10px;
   }
 
-  nav button{
+  .userContainer button{
     background-color: #b3613c; 
     color: white; 
     padding: 3px 7px; 
@@ -56,6 +55,10 @@
     margin-left: 5px;
   }
 
+  .userContainer span{
+    color:#b3613c;
+  }
+
   @media (max-width: 480px) {
     .appLogo {
       height: 70px; /* Adjust logo height for mobile */
@@ -65,7 +68,6 @@
       font-size: 10px;
     }
     .appLink {
-      color: white;
       text-decoration: none;
       font-size: 14px;
     }
