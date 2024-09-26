@@ -16,7 +16,7 @@ function Navbar() {
   return (
     <>
         <div className='logoContainer'>
-          <Link to="/"><img src="/pie-logo.png" alt="Logo" className="appLogo"/></Link>
+          <Link to="/"><img src="/logo.png" alt="Logo" className="appLogo"/></Link>
         </div>
       <nav className='appNav'>
       <Link to="/" className='appLink'>Home</Link>
