@@ -33,7 +33,7 @@
 }
 
 .modalButtons button {
-  background: #007BFF; /* Primary button color */
+  background: #f5d47a; /* Primary button color */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -44,7 +44,7 @@
 }
 
 .modalButtons button:hover {
-  background: #0056b3; /* Darker shade on hover */
+  background: #f0bd16; /* Darker shade on hover */
 }
 
 .modalButtons button:active {

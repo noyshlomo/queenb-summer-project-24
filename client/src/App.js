@@ -36,6 +36,7 @@ function App() {
             <Route path="/search/:search" element={<SearchPage />} />
             <Route path="/:id" element={<RecipePage />} />
             <Route path="/filters" element={<FiltersPage />} />
+            <Route path="/upload" element={<UploadRecipePage/>} />
           </Routes>
         </main>
       </div>
