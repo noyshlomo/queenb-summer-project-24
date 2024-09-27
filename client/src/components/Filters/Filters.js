@@ -14,7 +14,7 @@ const Filters = () => {
   }, [recipes]); // Run effect whenever recipes change
 
   return (
-    <Stack spacing={2} sx={{ display: "inline-flex" }}>
+    <Stack spacing={2} sx={{ width: "100%", display: "inline-flex" }}>
       <SortComponent />
       <PreparationStepsFilter />
       <TagsFilter />
