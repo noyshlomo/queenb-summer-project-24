@@ -1,4 +1,4 @@
-.container {
+.containerFormIn {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,7 +6,7 @@
   margin-bottom: 1.5rem;
 }
 
-.container label {
+.containerFormIn label {
   display: block; 
   width: 100%;
   max-width: 500px; 
@@ -16,7 +16,7 @@
   text-align: left;
 }
 
-.container input {
+.containerFormIn input {
   width: 100%;
   max-width: 500px; 
   padding: 0.5rem;
@@ -27,11 +27,11 @@
   box-sizing: border-box; 
 }
 
-.container .errorBorder {
+.containerFormIn .errorBorder {
   border-color: red;
 }
 
-.container .errorText {
+.containerFormIn .errorText {
   width: 100%;
   max-width: 500px;
   color: red;

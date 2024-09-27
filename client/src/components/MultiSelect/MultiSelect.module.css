@@ -12,13 +12,31 @@
   text-align: left;
 }
 
-.container {
+.containerFirst {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  box-sizing: border-box;
+}
+
+
+.containerFirst .labelMulti {
+  font-weight: 600;
+  justify-content: left;
+  text-align: left; 
+  margin-bottom: 0.5rem; 
+}
+
+.containerMulti {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   margin-bottom: 1.5rem;
 }
+
 
 .select-container {
   display: flex;

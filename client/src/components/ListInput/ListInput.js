@@ -49,8 +49,8 @@ const ListInput = ({ label, items, setItems, emptyFields, fieldName, required })
 
     return (
       <>
-        <label>{label}</label>
-        <div className={styles.container}>
+        <div className={styles.containerList}>
+        <label className = {styles.labelList}>{label}</label>
         {/* Mapping through the items array and generating an input field for each item. */}
         {items.map((item, index) => (
           <div key={index} className={styles.inputContainer}> 
