@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../../services/api";
-import styles from './EditForm.module.css';
+//import styles from './EditForm.module.css';
+import styles from '../UploadForm/UploadForm.module.css'
 import FormInput from '../FormInput/FormInput';
 import FormTextArea from "../FormTextArea/FormTextArea";
 import ListInput from "../ListInput/ListInput";
@@ -241,7 +242,7 @@ const handleSubmit = async () => {
           emptyFields={emptyFields} 
           fieldName="imgLink" 
         />
-        <div className="button-container">
+        <div className={styles.buttonContainerEdit}>
           <button type="button" className={styles.bCancelEdit} onClick={() => setShowCancel(true)}>
             Cancel
           </button>
