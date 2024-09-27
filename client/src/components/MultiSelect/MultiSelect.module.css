@@ -12,6 +12,22 @@
   text-align: left;
 }
 
+.containerFirst {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  box-sizing: border-box;
+}
+
+
+.containerFirst .labelMulti {
+  font-weight: 600;
+  justify-content: left;
+  text-align: left; 
+  margin-bottom: 0.5rem; 
+}
 
 .containerMulti {
   display: flex;
@@ -21,12 +37,6 @@
   margin-bottom: 1.5rem;
 }
 
-.labelMulti {
-  font-weight: 600;
-  justify-content: left;
-  text-align: left; /* Align the label to the left */
-  margin-bottom: 0.5rem; /* Add some space between the label and the select input */
-}
 
 .select-container {
   display: flex;
