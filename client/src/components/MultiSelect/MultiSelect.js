@@ -36,8 +36,8 @@ const MultiSelect = ({ label, value, onChange , emptyFields, fieldName }) => {
 
     return(
         <>
-        <label>{label}</label>
-          <div className={styles.container}>
+        <label className= {styles.labelMulti}>{label}</label>
+          <div className={styles.containerMulti}>
             <Select 
                 name={fieldName}
                 required
