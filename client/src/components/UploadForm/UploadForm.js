@@ -233,7 +233,7 @@ const UploadForm = () => {
             emptyFields={emptyFields} 
             fieldName="imgLink" 
           />
-          <div className="button-container">
+          <div className={styles.buttonContainerM}>
           {/* button for raising a cancel popup, by setting showCancel to true */}
           <button type="button" onClick={() => setShowCancel(true)} className = {styles.bCancelUpload}>cancel</button>
           <button type="submit" onClick={startProcess} disabled={isSubmitting} className = {styles.bSubmitUpload}>

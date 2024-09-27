@@ -1,4 +1,4 @@
-.container {
+.containerTextA {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,7 +6,7 @@
   margin-bottom: 1.5rem;
 }
 
-label {
+.containerTextA label {
   width: 100%;
   max-width: 500px;
   margin-bottom: 0.5rem;
@@ -15,7 +15,7 @@ label {
   text-align: left;
 }
 
-textarea {
+.containerTextA textarea {
   width: 100%;
   max-width: 500px;
   padding: 0.5rem;
@@ -27,11 +27,11 @@ textarea {
   box-sizing: border-box;
 }
 
-.errorBorder {
+.containerTextA .errorBorder {
   border-color: red;
 }
 
-.errorText {
+.containerTextA .errorText {
   width: 100%;
   max-width: 500px;
   color: red;
@@ -39,5 +39,3 @@ textarea {
   margin-top: 0.25rem;
   text-align: left;
 }
-
-
