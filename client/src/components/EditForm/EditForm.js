@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../../services/api";
-//import styles from './EditForm.module.css';
-import styles from '../UploadForm/UploadForm.module.css'
+import styles from './EditForm.module.css';
 import FormInput from '../FormInput/FormInput';
 import FormTextArea from "../FormTextArea/FormTextArea";
 import ListInput from "../ListInput/ListInput";
@@ -13,8 +12,7 @@ import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
 import { useRecipesContext } from '../../hooks/useRecipesContext'; 
 import { useUserContext } from '../../hooks/useUserContext';
 
-// Edit form for existing recipes
-const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe ID should be passed in as a prop
+const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => { 
   const [title, setTitle] = useState('');
   const [prepTime, setPrepTime] = useState(0);
   const [description, setDescription] = useState('');
@@ -29,19 +27,16 @@ const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe
   const [showSuccess, setShowSuccess] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const { user } = useUserContext(); // Get the user context
-    // Assuming userId is stored in user._id - saving the userId for later use in handleSubmit
+  const { user } = useUserContext(); 
   const userId = user?._id;
 
   const { dispatch } = useRecipesContext();
 
-  // Fetch recipe data by ID when component mounts
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
         const response = await api.get(`/recipe/${recipeId}`);
         const recipe = response.data;
-        // Pre-fill the form with the existing recipe data
         setTitle(recipe.title);
         setPrepTime(recipe.prepTime);
         setDescription(recipe.description);
@@ -95,44 +90,6 @@ const EditForm = ({ recipeId, setRecipeToEdit, onUpdateRecipe }) => {  // Recipe
     handleSubmit();
   };
 
-//   const handleSubmit = async () => {
-//     const recipe = {
-//       title,
-//       prepTime,
-//       imgLink,
-//       description,
-//       ingredients,
-//       prepSteps,
-//       tags,
-//       submissionTime: new Date().toLocaleString() + '',
-//       userId,
-//     };
-
-//     try {
-//       const response = await api.put(`/recipe/profile/${recipeId}`, recipe); // Update the recipe
-
-//       const userLocal = JSON.parse(localStorage.getItem('user'));
-//       await api.update('/recipe/', recipe, {headers: { 'Authorization': `Bearer $(userLocal.token)`} })
-
-
-//       if (response.status === 200) {
-//         setShowSuccess(true);
-//         setShowCancel(false);
-//         onUpdateRecipe({ ...recipe, _id: recipeId });
-
-//         // Dispatch the updated recipe and close the form
-//         dispatch({ type: 'UPDATE_RECIPE', payload: recipe });
-//         setRecipeToEdit(null);  // Close the EditForm after success
-//     } else {
-//         console.error("Failed to update the recipe:", response.status);
-//     }
-
-// } catch (err) {
-//     console.error("Error updating recipe:", err);
-//     setError(err);
-//     setEmptyFields(emptyFields || []);
-// }
-//   };
 const handleSubmit = async () => {
   const recipe = {
     title,
@@ -147,31 +104,26 @@ const handleSubmit = async () => {
   };
 
   try {
-    // Retrieve user info from local storage (including the token)
     const userLocal = JSON.parse(localStorage.getItem('user'));
 
-    // Ensure the token exists
     if (!userLocal || !userLocal.token) {
       setError("User not authenticated. Please log in.");
       return;
     }
 
-    // Make the API request with the token in the headers
     const response = await api.put(`/recipe/profile/${recipeId}`, recipe, {
       headers: {
-        'Authorization': `Bearer ${userLocal.token}`, // Correct token interpolation
+        'Authorization': `Bearer ${userLocal.token}`, 
       },
     });
 
     if (response.status === 200) {
-      // Handle success case
       setShowSuccess(true);
       setShowCancel(false);
       onUpdateRecipe({ ...recipe, _id: recipeId });
-
-      // Dispatch the updated recipe to the context
+    
       dispatch({ type: 'UPDATE_RECIPE', payload: recipe });
-      setRecipeToEdit(null);  // Close the form on success
+      setRecipeToEdit(null);  
     } else {
       console.error("Failed to update the recipe:", response.status);
       setError("Failed to update the recipe. Please try again.");
@@ -277,22 +229,19 @@ const handleSubmit = async () => {
               showCancel = {setShowCancel}
             />
           }
-          
-          {/* if error is true (an error occurred in the server), showing the error popup */}
+              
           {error && 
             <ErrorPopup 
             error={setError} 
             />
           }
-
-          {/* if post request succeeded in handleSubmit, showing the success popup */}
+       
           {showSuccess && 
             <SuccessPopup
             showSuccess = {setShowSuccess} 
             />
           }
-
-          {/* if submit button was pressed, and the required fields are filled, showing the confirmation popup */}
+      
           {showConfirm &&
             <ConfirmationPopup 
             confirm={showConfirm} 
