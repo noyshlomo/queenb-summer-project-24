@@ -13,8 +13,8 @@ const FormTextArea = ({ label, value, onChange, emptyFields, fieldName }) => {
 
     return (
       <>
+        <div className={styles.containerTextA}>
         <label>{label}</label>
-        <div className={styles.container}>
         <textarea
           required
           value={value}

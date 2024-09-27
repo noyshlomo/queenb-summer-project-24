@@ -27,8 +27,8 @@ const FormInput = ({ label, type, value, onChange, emptyFields, fieldName }) => 
 
     return (
       <>
+        <div className={styles.containerFormIn}>
         <label>{label}</label>
-        <div className={styles.container}>
         <input
           type={type}
           required

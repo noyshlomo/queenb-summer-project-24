@@ -1,12 +1,16 @@
 
-.container {
+.containerList {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 500px;
   margin: 0 auto 1.5rem;
-  align-items:center;
   box-sizing: border-box;
+}
+
+.containerList .labelList{
+  text-align: left;
+  font-weight: 600;
 }
 
 .inputContainer {
