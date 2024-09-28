@@ -18,60 +18,105 @@ h1 {
 
 .recipeCard {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-between;
-  border: 1px solid #ff6b81;
-  padding: 20px;
-  margin-bottom: 20px;
-  background-color: #f3f2ee;
-  border-radius: 8px;
+  padding: 16px;
+  border: 2px solid #b3613c; 
+  margin-bottom: 16px;
+  margin-top: 28px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap; 
+  border-radius: 15px; 
 }
 
 .recipeImage {
   width: 100px;
   height: 100px;
   object-fit: cover;
-  border-radius: 5px;
+  margin-right: 12px;
+  border-radius: 10px; 
+
 }
 
-.recipeCard h1 {
-  font-size: 18px;
-  color: #333;
-  margin: 0;
-}
-
-.recipeCard p {
-  font-size: 14px;
-  color: #666;
-  flex-grow: 1;
-  margin-left: 20px;
-}
-
-.actionButtons {
+.recipeInfo {
   display: flex;
-  gap: 10px;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: flex-start;
+  flex: 2;
+  margin-right: 20px;
 }
 
-.actionButtons button {
-  background-color: #e16ff0;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
+.recipeTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0; 
+  padding-bottom: 5px; 
+}
+
+.recipeDescription {
+  font-size: 16px;
+  color: #666;
+  margin: 0; 
+  flex: left;
+  justify-content: left;
+}
+
+.recipePrepTime {
+  font-size: 16px;
+  margin-left: auto; 
+  margin-right: 24px;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.actions button {
+  background-color: #b3613c;
+  color: white; 
+  font-size: 1.1rem; 
+  padding: 0.75rem 1.5rem; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
   transition: background-color 0.3s ease;
 }
 
-.actionButtons button:hover {
-  background-color: #ff4a61;
+.actions button:hover {
+  background-color: #cf846d; 
 }
 
-.actionButtons button.delete {
-  background-color: #ffb6c1;
-}
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .recipeCard {
+      flex-direction: column;
+      align-items: flex-start;
+  }
 
-.actionButtons button.delete:hover {
-  background-color: #ff7b99;
-}
+  .recipeImage {
+      margin-bottom: 12px;
+  }
 
-  
+  .recipeInfo {
+      align-items: flex-start;
+      margin-right: 0;
+  }
+
+  .recipeTitle, .recipeDescription {
+      margin-bottom: 8px;
+  }
+
+  .recipePrepTime {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 12px;
+  }
+
+  .actions {
+      margin-left: 0;
+  }
+}

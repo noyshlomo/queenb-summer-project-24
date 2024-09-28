@@ -40,6 +40,7 @@ function App() {
             <Route path="/profile/:userId" element={<UserProfile />} />
             <Route path="/search/:search" element={<SearchPage />} />
             <Route path="/:id" element={<RecipePage />} />
+            <Route path="/upload" element={<UploadRecipePage />} />
           </Routes>
         </main>
       </div>
