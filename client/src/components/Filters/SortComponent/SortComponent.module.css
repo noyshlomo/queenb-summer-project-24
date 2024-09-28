@@ -1,39 +1,5 @@
-.container {
-display: flex;
-justify-content: flex-start;
-width: 280px;
-}
-
-.formControl {
-width: 100%;
-}
-
-.inputLabel {
-color: inherit;
-}
-
-.inputLabelFocused {
-color: black;
-}
-
-.outlinedInputFocused fieldset {
-border-color: black;
-}
-
-.selectMenu {
-text-align: left;
-font-size: 0.875rem;
-}
-
-.menuItem {
-font-size: 0.875rem;
-}
-
-.menuItemDisabled {
-color: lightgray;
-}
-
-.menuPaper {
-max-height: calc(48px * 4.5 + 8px);
-width: 200px;
+.wrapper{
+    display: flex;
+    justify-content: flex-start;
+    width: 280px;
 }

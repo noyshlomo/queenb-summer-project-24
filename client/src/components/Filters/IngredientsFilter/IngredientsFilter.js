@@ -1,5 +1,4 @@
 import { React, useEffect, useState, Fragment, useContext } from "react";
-import PropTypes from "prop-types";
 import { useTheme, styled } from "@mui/material/styles";
 import Popper from "@mui/material/Popper";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
@@ -11,49 +10,7 @@ import InputBase from "@mui/material/InputBase";
 import Box from "@mui/material/Box";
 import api from "../../../services/api";
 import { FiltersContext } from "../../../context/FiltersContext";
-
-const StyledPopper = styled(Popper)(({ theme }) => ({
-  border: "1px solid #e1e4e8",
-  boxShadow: "0 8px 24px rgba(149, 157, 165, 0.2)",
-  color: "#24292e",
-  backgroundColor: "#fff",
-  borderRadius: 6,
-  width: 300,
-  zIndex: theme.zIndex.modal,
-  fontSize: 13,
-}));
-
-const StyledInput = styled(InputBase)(({ theme }) => ({
-  padding: 10,
-  width: "100%",
-  borderBottom: "1px solid #30363d",
-  "& input": {
-    borderRadius: 4,
-    backgroundColor: "#fff",
-    border: "1px solid #30363d",
-    padding: 8,
-    fontSize: 14,
-  },
-}));
-
-const Button = styled(ButtonBase)(({ theme }) => ({
-  fontSize: 13,
-  width: "100%",
-  textAlign: "left",
-  paddingBottom: 8,
-  color: "#000", // Always stays black
-  fontWeight: 600,
-  "&:hover,&:focus": {
-    color: "#000", // Keeps black color on click/hover
-  },
-  "& span": {
-    width: "100%",
-  },
-  "& svg": {
-    width: 16,
-    height: 16,
-  },
-}));
+import styles from "./IngredientsFilter.module.css";
 
 function IngredientsFilter() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -93,34 +50,28 @@ function IngredientsFilter() {
 
   return (
     <Fragment>
-      <Box sx={{ width: 280, fontSize: 16 }}>
-        <Button disableRipple aria-describedby={id} onClick={handleClick}>
+      <Box className={styles.wrapper}>
+        <ButtonBase
+          className={styles.button}
+          disableRipple
+          aria-describedby={id}
+          onClick={handleClick}
+        >
           <span>Ingredients</span>
           <SettingsIcon />
-        </Button>
+        </ButtonBase>
         {selectedIngredients.map((ingredient) => (
-          <Box
-            key={ingredient}
-            sx={{
-              mt: "3px",
-              height: 20,
-              padding: ".15em 4px",
-              fontWeight: 600,
-              lineHeight: "15px",
-              borderRadius: "2px",
-              backgroundColor: "#b3613c", // Set ingredient background color
-              color: theme.palette.getContrastText("#b3613c"),
-            }}
-          >
+          <Box className={styles.ingredientBox} key={ingredient}>
             {ingredient}
           </Box>
         ))}
       </Box>
-      <StyledPopper
+      <Popper
         id={id}
         open={open}
         anchorEl={anchorEl}
         placement="bottom-start"
+        className={styles.popper}
       >
         <ClickAwayListener onClickAway={handleClose}>
           <div>
@@ -141,23 +92,24 @@ function IngredientsFilter() {
                       component={DoneIcon}
                       sx={{ visibility: selected ? "visible" : "hidden" }}
                     />
-                    <Box sx={{ flexGrow: 1, ml: 1 }}>{option}</Box>
+                    <Box className={styles.option}>{option}</Box>
                   </li>
                 );
               }}
               options={availableIngredients}
               getOptionLabel={(option) => option}
               renderInput={(params) => (
-                <StyledInput
+                <InputBase
                   ref={params.InputProps.ref}
                   inputProps={params.inputProps}
                   placeholder="Filter ingredients"
+                  className={styles.inputWrapper}
                 />
               )}
             />
           </div>
         </ClickAwayListener>
-      </StyledPopper>
+      </Popper>
     </Fragment>
   );
 }

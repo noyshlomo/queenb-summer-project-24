@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { FiltersContext } from "../../../context/FiltersContext";
 import api from "../../../services/api";
+import styles from "./TagsFilter.module.css";
 
 function TagsFilter() {
   const { selectedTags, setSelectedTags } = useContext(FiltersContext);
@@ -27,7 +28,7 @@ function TagsFilter() {
   };
 
   return (
-    <Stack spacing={3} sx={{ width: 280 }}>
+    <Stack spacing={3} className={styles.container}>
       <Autocomplete
         multiple
         id="tags-outlined"
@@ -41,14 +42,12 @@ function TagsFilter() {
             {...params}
             label="Filter by tags"
             placeholder="Select a tag..."
+            className={styles.textField}
             sx={{
               "& .MuiOutlinedInput-root": {
                 "&.Mui-focused fieldset": {
                   borderColor: "black", // Keep black on focus (click)
                 },
-              },
-              "& .MuiInputLabel-root.Mui-focused": {
-                color: "black", // Label color on focus
               },
             }}
           />

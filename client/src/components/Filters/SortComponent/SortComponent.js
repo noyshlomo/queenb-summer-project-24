@@ -5,6 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { FiltersContext } from "../../../context/FiltersContext";
+import styles from "./SortComponent.module.css";
 
 function SortComponent() {
   const options = [
@@ -28,12 +29,8 @@ function SortComponent() {
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
-  const fixedWidth = 280;
-
   return (
-    <Box
-      sx={{ display: "flex", justifyContent: "flex-start", width: fixedWidth }}
-    >
+    <Box className={styles.wrapper}>
       <FormControl
         sx={{
           width: "100%",
@@ -65,7 +62,7 @@ function SortComponent() {
               },
             },
           }}
-          sx={{ textAlign: "left", fontSize: "0.875rem" }} // Smaller font size
+          sx={{ textAlign: "left", fontSize: "0.875rem" }}
         >
           {options.map((option) => (
             <MenuItem
@@ -74,7 +71,7 @@ function SortComponent() {
               sx={{
                 fontSize: "0.875rem",
                 color:
-                  option.value === 0 && sortBy === 0 ? "lightgray" : "inherit", // Lighter color for the first option when selected
+                  option.value === 0 && sortBy === 0 ? "lightgray" : "inherit",
               }}
             >
               {option.label}
