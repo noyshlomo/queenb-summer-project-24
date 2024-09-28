@@ -4,6 +4,7 @@ import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
 import api from "../../../services/api";
 import { FiltersContext } from "../../../context/FiltersContext";
+import styles from "./PreparationStepsFilter.module.css";
 
 function PreparationStepsFilter() {
   const { selectedMaxPrepSteps, setSelectedMaxPrepSteps } =
@@ -30,27 +31,18 @@ function PreparationStepsFilter() {
   };
 
   return (
-    <Box sx={{ width: 280 }}>
-      <Typography
-        variant="body1"
-        sx={{ color: "black", mb: 1, textAlign: "left" }}
-      >
+    <Box className={styles.container}>
+      <Typography className={styles.typography} variant="body1">
         Max preparation steps:
       </Typography>
       <Slider
+        className={styles.slider}
         size="small"
         aria-label="Max preparation steps"
         valueLabelDisplay="auto"
         value={selectedMaxPrepSteps}
         onChange={handleMaxPrepStepChange}
         max={maxPrepSteps}
-        sx={{
-          color: "black",
-          "& .MuiSlider-thumb": {
-            borderRadius: "50%",
-            border: "2px solid black",
-          },
-        }}
       />
     </Box>
   );
