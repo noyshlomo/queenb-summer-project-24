@@ -31,16 +31,11 @@ function App() {
               path="/signup"
               element={!user ? <SignupPage /> : <Navigate to="/" />}
             />
-            <Route
-              path="/upload"
-              element={user ? <UploadRecipePage /> : <Navigate to="/" />}
-            />
+            <Route path="/upload" element={<UploadRecipePage/> } />
             {/* Dynamic route for recipe, placed after specific ones */}
             <Route path="/:id" element={<RecipePage />} />
             <Route path="/profile/:userId" element={<UserProfile />} />
             <Route path="/search/:search" element={<SearchPage />} />
-            <Route path="/:id" element={<RecipePage />} />
-            <Route path="/upload" element={<UploadRecipePage />} />
           </Routes>
         </main>
       </div>
