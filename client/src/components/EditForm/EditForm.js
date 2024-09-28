@@ -99,7 +99,7 @@ const handleSubmit = async () => {
     ingredients,
     prepSteps,
     tags,
-    submissionTime: new Date().toLocaleString(),
+    submissionTime: new Date().toISOSString(),
     userId,
   };
 
