@@ -17,7 +17,7 @@ function DisplayFilteredRecipes() {
 
   return (
     <div>
-      <h1>Results for {search}</h1>
+      <h1>Results for '{search}'</h1>
       <div>
         {recipes.length > 0 ? (
           <div className="container">
