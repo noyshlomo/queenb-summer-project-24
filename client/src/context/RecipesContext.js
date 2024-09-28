@@ -22,6 +22,10 @@ export const recipesReducer = (state, action) => {
       case 'SET_RECIPES':{
         return { recipes : action.payload};
       }
+      case 'ADD_RECIPE': // Add this case
+      return {
+        recipes: [...state.recipes, action.payload] // Add new recipe to the existing list
+      }
     default:
       return state;
   }
