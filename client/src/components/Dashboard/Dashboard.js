@@ -89,7 +89,9 @@ const Dashboard = () => {
             setRecipes((prevRecipes) =>
                 prevRecipes.filter((recipe) => recipe._id !== recipeToDelete)
             );
-            dispatch({ type: 'DELETE_RECIPE', payload: recipeToDelete });
+
+            dispatch({ type: 'DELETE_RECIPE', payload:  { _id: recipeToDelete } });
+            
             setShowModal(false);
         } catch (error) {
             console.error('Error deleting recipe:', error);
