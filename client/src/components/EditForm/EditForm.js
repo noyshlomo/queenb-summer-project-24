@@ -99,7 +99,7 @@ const handleSubmit = async () => {
     ingredients,
     prepSteps,
     tags,
-    submissionTime: new Date().toLocaleString(),
+    submissionTime: new Date().toISOString(),
     userId,
   };
 
@@ -203,17 +203,6 @@ const handleSubmit = async () => {
           </button> 
       </div>
 
-
-        {showCancel && <CancelPopup setShowCancel={setShowCancel} />}
-        {error && <ErrorPopup error={setError} />}
-        {showSuccess && <SuccessPopup setShowSuccess={setShowSuccess} />}
-        {showConfirm && (
-          <ConfirmationPopup 
-            confirm={showConfirm} 
-            onConfirm={handleConfirmSubmit} 
-            onCancel={setShowConfirm} 
-          />
-        )}
       
           {showCancel && 
             <CancelPopup
@@ -246,7 +235,7 @@ const handleSubmit = async () => {
             <ConfirmationPopup 
             confirm={showConfirm} 
             onConfirm={handleConfirmSubmit} 
-            onCancel={setShowConfirm} 
+            onCancel={() => setShowConfirm(false)} 
             />
           }
       </form>

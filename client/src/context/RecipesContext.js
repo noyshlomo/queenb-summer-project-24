@@ -22,6 +22,10 @@ export const recipesReducer = (state, action) => {
       case 'SET_RECIPES':{
         return { recipes : action.payload};
       }
+      case 'ADD_RECIPE':
+        return{
+          recipes:[...state.recipes, action.payload]
+        }
     default:
       return state;
   }

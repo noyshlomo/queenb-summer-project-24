@@ -29,14 +29,12 @@ function App() {
             {/* Specific routes should come before dynamic ones */}
             <Route path="/login" element={!user ? <LoginPage /> : <Navigate to = "/" />} />
             <Route path="/signup" element={!user ? <SignupPage />: <Navigate to = "/" />} />
-            <Route path="/upload" element={user? <UploadRecipePage/> : <Navigate to = "/" />} />
+            <Route path="/upload" element={<UploadRecipePage/> } />
             {/* Dynamic route for recipe, placed after specific ones */}
             <Route path="/:id" element={<RecipePage />} />
             <Route path="/profile/:userId" element={<UserProfile />} />
             <Route path="/search/:search" element={<SearchPage />} />
-            <Route path="/:id" element={<RecipePage />} />
             <Route path="/filters" element={<FiltersPage />} />
-            <Route path="/upload" element={<UploadRecipePage/>} />
           </Routes>
         </main>
       </div>
