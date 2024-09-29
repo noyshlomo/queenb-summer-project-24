@@ -91,7 +91,7 @@ const Dashboard = () => {
             );
 
             dispatch({ type: 'DELETE_RECIPE', payload:  { _id: recipeToDelete } });
-            
+
             setShowModal(false);
         } catch (error) {
             console.error('Error deleting recipe:', error);
@@ -104,7 +104,8 @@ const Dashboard = () => {
 
     return (
         <div className={styles.dashboardContainer}>
-             {!recipeToEdit && <h1>My Recipes</h1>}
+
+             {!recipeToEdit && <h1 className={styles.profileTitle}>My Recipes</h1>}
 
             {!user ? (
                 <p>Please log in to view the recipes.</p>
