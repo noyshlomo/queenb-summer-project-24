@@ -5,7 +5,7 @@ import FormInput from '../FormInput/FormInput';
 import FormTextArea from "../FormTextArea/FormTextArea";
 import ListInput from "../ListInput/ListInput";
 import MultiSelect from "../MultiSelect/MultiSelect";
-import CancelPopup from "../CancelPopup/CancelPopup";
+import CancelEditPopup from "../CancelEditPopup/CancelEditPopup";
 import SuccessPopup from "../SuccessPopup/SuccessPopup";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
 import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
@@ -204,20 +204,13 @@ const handleSubmit = async () => {
       </div>
 
       
-          {showCancel && 
-            <CancelPopup
-              title = {setTitle}
-              prepTime= {setPrepTime}
-              description= {setDescription}
-              ingredients= {setIngredients}
-              prepSteps= {setPrepSteps}
-              tags= {setTags}
-              imgLink= {setImgLink}
-              error= {setError}
-              emptyFields= {setEmptyFields}
-              showCancel = {setShowCancel}
-            />
-          }
+         {/* Show Cancel Edit Popup */}
+      {showCancel && 
+        <CancelEditPopup
+          showCancel={setShowCancel}
+        />
+      }
+              
               
           {error && 
             <ErrorPopup 

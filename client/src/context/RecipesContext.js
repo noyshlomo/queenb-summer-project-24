@@ -13,9 +13,7 @@ export const recipesReducer = (state, action) => {
       };
 
     case 'DELETE_RECIPE':
-      // console.log('Recipes before deletion:', state.recipes);
-      const updatedRecipes = state.recipes.filter(r => r._id !== action.payload._id);
-      // console.log('Recipes after deletion:', updatedRecipes);
+      const updatedRecipes = state.recipes.filter(recipe => recipe._id !== action.payload._id);
       return { 
         recipes: updatedRecipes
       }

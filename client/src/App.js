@@ -14,6 +14,7 @@ import UploadRecipePage from "./pages/UploadRecipePage/UploadRecipePage";
 function App() {
   const { user } = useUserContext();
   return (
+ 
     <BrowserRouter>
       <div className={styles.app}>
         <header className={styles.appHeader}>

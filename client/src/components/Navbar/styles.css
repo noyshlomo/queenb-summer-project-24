@@ -14,9 +14,10 @@
   }
   
   .appLink {
-    color: white;
+    color: #b3613c;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.3em;
+    font-weight: 540;
   }
   
   .appLink:hover {
