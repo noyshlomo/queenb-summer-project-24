@@ -100,7 +100,6 @@ const handleSubmit = async () => {
     prepSteps,
     tags,
     submissionTime: new Date().toISOString(),
-    submissionTime: new Date().toISOString(),
     userId,
   };
 
