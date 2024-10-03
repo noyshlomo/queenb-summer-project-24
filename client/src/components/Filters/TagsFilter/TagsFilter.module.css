@@ -6,10 +6,6 @@ width: 280px;
 width: 100%; /* Ensures the TextField takes full width */
 }
 
-.textFieldFocused .MuiOutlinedInput-root .Mui-focused fieldset {
-border-color: black; /* Keep black on focus (click) */
-}
-
-.textFieldFocused .MuiInputLabel-root.Mui-focused {
-color: black; /* Label color on focus */
+.textField> :global(.MuiInputLabel-root):global(.Mui-focused) {
+color: black !important; /* Label color on focus */
 }

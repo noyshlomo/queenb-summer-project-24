@@ -1,8 +1,6 @@
 import { useState } from "react";
-//rena - refresh problem.
-import { useContext } from "react";
-import { RecipesContext } from "../../context/RecipesContext";
-
+import { useContext } from "react"; 
+import { RecipesContext } from "../../context/RecipesContext"; 
 import api from "../../services/api";
 import styles from './UploadForm.module.css';
 import FormInput from '../FormInput/FormInput';
@@ -18,8 +16,11 @@ import useUserContext from "../../hooks/useUserContext";
 
 // Component for uploading recipes through a form
 const UploadForm = () => {
-  //rena - refresh problem.
-  const { dispatch } = useContext(RecipesContext); // Get dispatch from context
+  
+  // Getting dispatch from context
+  const {dispatch} = useContext(RecipesContext);
+
+
   // Declaring state variables for form inputs
   const [title, setTitle] = useState('');
   const [prepTime, setPrepTime] = useState(0);
@@ -155,18 +156,15 @@ const UploadForm = () => {
     // Making a POST request to the server to create the new recipe
     try {
       const userLocal = JSON.parse(localStorage.getItem('user'));
-      //rena - refresh problem. (const response = await - changes)
       const response = await api.post('/recipe/', recipe, {
         headers: { 
           'Authorization': `Bearer ${userLocal.token}`}});
 
-    // rena - refresh problem
-    const newRecipe = response.data.recipe; 
-    // Dispatch ADD_RECIPE to update the state and show the new recipe immediately
-    dispatch({ type: 'ADD_RECIPE', payload: newRecipe });
+      const newRecipe = response.data.recipe;
+      //Dispatching ADD_RECIPE to update the state and show the new recipe immediately 
+      dispatch( {type: 'ADD_RECIPE', payload: newRecipe} );
 
-
-    // Clearing form inputs if successful
+      // Clearing form inputs if successful
       setTitle('');
       setPrepTime(0); 
       setDescription('');

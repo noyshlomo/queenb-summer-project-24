@@ -5,7 +5,7 @@ import FormInput from '../FormInput/FormInput';
 import FormTextArea from "../FormTextArea/FormTextArea";
 import ListInput from "../ListInput/ListInput";
 import MultiSelect from "../MultiSelect/MultiSelect";
-import CancelPopup from "../CancelPopup/CancelPopup";
+import CancelEditPopup from "../CancelEditPopup/CancelEditPopup";
 import SuccessPopup from "../SuccessPopup/SuccessPopup";
 import ErrorPopup from "../ErrorPopup/ErrorPopup";
 import ConfirmationPopup from "../ConfirmationPopup/ConfirmationPopup";
@@ -99,6 +99,7 @@ const handleSubmit = async () => {
     ingredients,
     prepSteps,
     tags,
+    submissionTime: new Date().toISOString(),
     submissionTime: new Date().toISOString(),
     userId,
   };
@@ -203,32 +204,14 @@ const handleSubmit = async () => {
           </button> 
       </div>
 
-
-        {showCancel && <CancelPopup setShowCancel={setShowCancel} />}
-        {error && <ErrorPopup error={setError} />}
-        {showSuccess && <SuccessPopup setShowSuccess={setShowSuccess} />}
-        {showConfirm && (
-          <ConfirmationPopup 
-            confirm={showConfirm} 
-            onConfirm={handleConfirmSubmit} 
-            onCancel={() => setShowConfirm(false)} 
-          />
-        )}
       
-          {showCancel && 
-            <CancelPopup
-              title = {setTitle}
-              prepTime= {setPrepTime}
-              description= {setDescription}
-              ingredients= {setIngredients}
-              prepSteps= {setPrepSteps}
-              tags= {setTags}
-              imgLink= {setImgLink}
-              error= {setError}
-              emptyFields= {setEmptyFields}
-              showCancel = {setShowCancel}
-            />
-          }
+         {/* Show Cancel Edit Popup */}
+      {showCancel && 
+        <CancelEditPopup
+          showCancel={setShowCancel}
+        />
+      }
+              
               
           {error && 
             <ErrorPopup 

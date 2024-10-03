@@ -13,19 +13,17 @@ export const recipesReducer = (state, action) => {
       };
 
     case 'DELETE_RECIPE':
-      // console.log('Recipes before deletion:', state.recipes);
-      const updatedRecipes = state.recipes.filter(r => r._id !== action.payload._id);
-      // console.log('Recipes after deletion:', updatedRecipes);
+      const updatedRecipes = state.recipes.filter(recipe => recipe._id !== action.payload._id);
       return { 
         recipes: updatedRecipes
       }
       case 'SET_RECIPES':{
         return { recipes : action.payload};
       }
-      case 'ADD_RECIPE': // Add this case
-      return {
-        recipes: [...state.recipes, action.payload] // Add new recipe to the existing list
-      }
+      case 'ADD_RECIPE':
+        return{
+          recipes:[...state.recipes, action.payload]
+        }
     default:
       return state;
   }

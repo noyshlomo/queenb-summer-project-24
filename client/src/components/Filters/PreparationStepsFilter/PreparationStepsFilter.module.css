@@ -4,15 +4,15 @@ width: 280px;
 
 .typography {
 color: black;
-margin-bottom: 8px; /* equivalent to 1 MUI spacing unit */
+margin-bottom: 1px;
 text-align: left;
 }
 
 .slider {
-color: black;
+color: black !important;
 }
 
-.sliderThumb {
+.slider>:global(.MuiSlider-thumb) {
 border-radius: 50%;
 border: 2px solid black;
 }

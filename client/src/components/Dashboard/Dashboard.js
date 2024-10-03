@@ -7,6 +7,7 @@ import { useUserContext } from '../../hooks/useUserContext';
 import EditForm from '../../components/EditForm/EditForm';
 
 const Dashboard = () => {
+    
     const [recipes, setRecipes] = useState([]);
     const [recipeToEdit, setRecipeToEdit] = useState(null); 
     const [recipeToDelete, setRecipeToDelete] = useState(null); 
@@ -88,7 +89,9 @@ const Dashboard = () => {
             setRecipes((prevRecipes) =>
                 prevRecipes.filter((recipe) => recipe._id !== recipeToDelete)
             );
-            dispatch({ type: 'DELETE_RECIPE', payload: recipeToDelete });
+
+            dispatch({ type: 'DELETE_RECIPE', payload:  { _id: recipeToDelete } });
+
             setShowModal(false);
         } catch (error) {
             console.error('Error deleting recipe:', error);
@@ -101,7 +104,8 @@ const Dashboard = () => {
 
     return (
         <div className={styles.dashboardContainer}>
-             {!recipeToEdit && <h1>My Recipes</h1>}
+
+             {!recipeToEdit && <h1 className={styles.profileTitle}>My Recipes</h1>}
 
             {!user ? (
                 <p>Please log in to view the recipes.</p>
@@ -160,3 +164,5 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+

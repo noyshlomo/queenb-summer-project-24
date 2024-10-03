@@ -1,3 +1,21 @@
+.home {
+    text-align: center;
+    padding: 20px;
+  }
+  
+.headline {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #53474F;
+  }
+
+
+.profileTitle {
+  font-size: 32px;
+  color: #b3613c;
+  text-align: center;
+}
+
 .recipeCard {
   display: flex;
   justify-content: flex-start;
