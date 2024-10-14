@@ -1,10 +1,40 @@
-# queenb-summer-project-template-24
+# FooDelicious - Recipes Web App
 
-This project template is designed for junior deevlopers aimed at gaining hands-on experience in full-stack development. 
-This project includes a Node.js server with Express, a React client, and MongoDB for the database, providing an opportunity to engage in frontend development, backend development, and API integration.
-Specifically the template is a full-stack MERN application for managing a library of rubber ducks - but you can modify it and build a library application of your choice.
+This Recipe Web App is a full-stack application built using the MERN (MongoDB, Express, React, Node.js) stack, developed as part of QueenB’s summer project. It enables users to explore, upload, and manage their own recipes in a personalized and secure environment.
 
-**FORK THIS REPO** before starting the installations and settings. 
+Key features of the app include secure user authentication (sign up and login), a user-specific recipe library, a content upload page, search and filtering options, and profile management, allowing users to edit or delete their profile and view only their own recipes. An intuitive home recipe display simplifies navigation and recipe browsing for a seamless user experience.
+
+The app was developed by a team working collaboratively on Trello and using Git for version control. The project provided valuable hands-on experience in full-stack development and agile teamwork.
+
+<!-- 
+## Features
+1. Library Items Presentation
+   - Display Content:
+      - Library View: Displays a grid of recipe items with thumbnails, titles, and brief descriptions for easy browsing.
+      - Item View: Users can view detailed information about a recipe by selecting an item.
+   - Responsive Design: The layout adjusts automatically to fit different screen sizes, ensuring accessibility on desktop, tablet, and mobile.
+   - Navigation: A logo button on all pages allows users to quickly navigate back to the Home Page.
+2. User Authentication & Secure Login
+   - Registration: Users can create accounts by providing an email, password, and optional profile details.
+   - Login: Existing users can log in using their email and password, with secure error handling for incorrect credentials.
+   - Additional Features: Includes password recovery and account verification to ensure a secure login experience.
+3. Content Upload Interface
+Upload Content: Users can upload recipes, including images, with a progress bar to show upload status.
+Metadata Input: Users must provide important details such as title, description, tags, and categories for the recipe. Input validation ensures metadata is complete and file types are correct.
+Feedback: Success or error messages are shown to inform the user about the status of their upload.
+4. Search Functionality
+Search Input: Users can search for specific recipes by entering keywords related to the content.
+Search Results: Displays matching recipes with thumbnails and brief descriptions.
+Optimization: Autocomplete and search suggestions are included to enhance the user search experience.
+5. Filtering & Sorting Options
+Filters: Users can filter recipes by type, tags, date, and other criteria to quickly find relevant content.
+Sorting: Recipes can be sorted by different options such as newest or most popular.
+Dynamic Updates: Results are updated dynamically as users apply filters or sorting criteria.
+6. Content Management Dashboard
+View Content: Users can view all of their uploaded recipes in a list or grid format.
+Edit Content: Metadata for recipes can be edited to update information.
+Delete Content: Users can delete recipes, with confirmation prompts to avoid accidental deletion.
+-->
 
 ## Table of Contents
 
